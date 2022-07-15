@@ -66,6 +66,7 @@ const Panel = ({ homeScreen }) => {
   const onSubmit = async (userData) => {
     let plate = null;
     clients &&
+      // eslint-disable-next-line array-callback-return
       clients.map((client) => {
         if (client.plate === userData.plate) {
           Swal.fire({

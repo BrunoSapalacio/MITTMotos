@@ -81,6 +81,7 @@ const Clients = ({ clients }) => {
     console.log(search);
     // eslint-disable-next-line array-callback-return
     clients &&
+      // eslint-disable-next-line array-callback-return
       clients.map((client) => {
         if (client.plate === search.toUpperCase()) {
           setClientSearch(client);
