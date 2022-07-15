@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const url = "http://localhost:3000/users";
 
   useEffect(() => {
     // Pega os dados da API
