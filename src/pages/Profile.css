@@ -1,0 +1,151 @@
+@media (max-width: 480px) {
+    .profile-grid {
+        flex-direction: column;
+        height: 100%!important;
+    }
+
+    .profile-card-1, .profile-card-2 {
+        width: 100%!important;
+        margin: 1.5em 0;
+    }
+
+    .profile-info {
+        margin-bottom: 1em;
+    }
+
+    .profile-box {
+        height: 70%!important;
+    }
+
+    .panel {
+        height: auto!important;
+    }
+}
+
+.profile-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.profile-content {
+    height: 100%;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profile-box {
+    background-color: #6393E8;
+    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-content  h1 {
+    margin: 1em;
+    color: #fff;
+}
+
+.profile-grid {
+    width: 90%;
+    height: 30em;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-card-1 {
+    width: 30%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.profile-img img {
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    margin: 1em 0;
+    border: 8px solid #434343;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profile-info span {
+    margin-bottom: 1em;
+    font-size: 1.2em;
+}
+
+.profile-info p {
+    margin: 0.2em 0;
+}
+
+.profile-card-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.profile-card-2 h1 {
+    color: #000;
+}
+
+.profile-form {
+    width: 80%;
+}
+
+.profile-form label {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+}
+
+.profile-form input {
+    width: 95%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 0.3em;
+    font-size: 1em;
+}
+
+.profile-form label span {
+    color: red;
+    position: absolute;
+    margin-top: 3em;
+}
+
+.button-profile {
+    width: 50%;
+    margin: 2em auto;
+    transition: all 0.3s ease-out;
+}
+
+.button-profile:hover {
+    background-color: #48813b;
+}
+
+hr {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1em;
+    color: #6393E8;
+}

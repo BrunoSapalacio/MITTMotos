@@ -1,0 +1,143 @@
+@media (max-width: 480px) {
+    .image {
+        display: none!important;
+    }
+
+    .login {
+        width: 100%!important;
+    }
+}
+
+/* ============================== Home.js ============================== */
+.content {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.image, .login {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img {
+    position: inherit;
+    height: auto;
+    max-width: 70%;
+}
+
+.login {
+    background-color: #6393E8;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.login > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+}
+
+.login h1 {
+    font-size: 3em;
+    margin-bottom: 0.4em;
+}
+
+.info-login {
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 5.5em;
+    background-color: #003399;
+    padding: 1em 0;
+}
+
+.info-login p {
+    font-size: 1.2em;
+}
+
+.login h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+/* ============================== Login.js & Register.js ============================== */
+
+form {
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-icon-user, .input-icon-pass{
+    display: flex;
+    height: 2.7em;
+    margin-bottom: 1em;
+    background-color: #fff;
+}
+
+.input-icon-user div , .input-icon-pass div {
+    width: 60px;
+    background-size: 1em;
+}
+
+.input-icon-user div {
+    background: url(../icons/user.svg) center no-repeat;
+    background-size: 1.8em;
+
+}
+
+.input-icon-pass div {
+    background: url(../icons/pass.svg) center no-repeat;
+    background-size: 1.4em;
+}
+
+.input-icon-user input, .input-icon-pass input {
+    width: 100%;
+    border: none;
+}
+
+.BoxInput {
+    padding-left: 1.5em;
+}
+
+.BoxInput, .BoxInput-2 {
+    width: 100%;
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.BoxInput-2 {
+    height: 3.5em;
+    background-color: #003399;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+
+textarea:focus, input:focus {
+    outline: 0;
+}
+
+.BoxCheck {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.3em;
+    margin-bottom: 0.6em;
+}
+
+.BoxCheck > input {
+    margin: 0.4em;
+    height: 1em;
+}
