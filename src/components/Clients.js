@@ -11,6 +11,7 @@ import EditClient from "../components/EditClient";
 import InfoClient from "./InfoClient";
 
 const Clients = ({ clients }) => {
+  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes";
   const cpf = useMask(presets.DOCUMENT_CPF); // transforma a string para o formato do cpf
   const phone = useMask(presets.PHONE_BR); // transforma a string para o formato do telefone/celular
   const [checkClient, setCheckClient] = useState(null);
@@ -47,7 +48,7 @@ const Clients = ({ clients }) => {
           }).then((result) => {
             if (result.isConfirmed) {
               axios
-                .delete(`http://localhost:3000/bikes/${id}`)
+                .delete(`https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes/${id}`)
                 .then((response) => {
                   console.log(response);
                 });

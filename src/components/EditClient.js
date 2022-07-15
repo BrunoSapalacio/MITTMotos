@@ -87,7 +87,7 @@ const EditClient = ( dataClient ) => {
                         confirmButtonColor: '#6393E8'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            axios.put(`http://localhost:3000/bikes/${client.client.id}/`, { 
+                            axios.put(`https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes/${client.client.id}/`, { 
                             name: userData.name,
                             cpf: userData.cpf,
                             phone: userData.phone,

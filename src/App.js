@@ -12,11 +12,12 @@ import Profile from "./pages/Profile";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/users";
 
   useEffect(() => {
     // Pega os dados da API
     async function getData() {
-      const response = await axios.get("http://localhost:3000/users");
+      const response = await axios.get(url);
       setUsers(response.data);
     }
     getData();
@@ -26,7 +27,7 @@ function App() {
 
   const homeScreen = () => {
     // Muda para a tela de login
-    axios.patch("http://localhost:3000/users", { login: false });
+    axios.patch(url, { login: false });
     //document.location.reload(true)
     document.location.replace("/");
   };

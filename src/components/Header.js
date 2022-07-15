@@ -12,10 +12,11 @@ import IconLogoff from '../icons/logoff.svg'
 
 const Header = ({ homeScreen }) => {
     const [users, setUsers] = useState([]);
+    const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/users";
 
     useEffect(() => { // Pega os dados da API quando o state 'user' é atualizado
         async function getData() {
-          const response = await axios.get('http://localhost:3000/users')
+          const response = await axios.get(url)
             setUsers(response.data);
         }
         getData()

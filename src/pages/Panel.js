@@ -45,13 +45,13 @@ const Panel = ({ homeScreen }) => {
     resolver: yupResolver(schema),
   });
   const [clients, setClients] = useState([]);
-  const url = "http://localhost:3000/bikes";
+  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes";
 
   useEffect(() => {
     // Pega os dados da API quando o state 'user' é atualizado
     async function getData() {
       try {
-        const response = await axios.get("http://localhost:3000/bikes");
+        const response = await axios.get(url);
         setClients(response.data);
         //console.log(typeof clients)
       } catch {

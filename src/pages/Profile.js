@@ -38,7 +38,7 @@ const Profile = ({ users, homeScreen }) => {
     resolver: yupResolver(schema),
   });
   const phone = useMask(presets.PHONE_BR); // transforma a string para o formato do telefone/celular
-  const url = "http://localhost:3000/users";
+  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/users";
 
   useEffect(() => {
     // faz a solicitação do servidor assíncrono e preenche o formulário
