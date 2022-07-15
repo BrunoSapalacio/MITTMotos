@@ -11,7 +11,6 @@ import EditClient from "../components/EditClient";
 import InfoClient from "./InfoClient";
 
 const Clients = ({ clients }) => {
-  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes";
   const cpf = useMask(presets.DOCUMENT_CPF); // transforma a string para o formato do cpf
   const phone = useMask(presets.PHONE_BR); // transforma a string para o formato do telefone/celular
   const [checkClient, setCheckClient] = useState(null);
