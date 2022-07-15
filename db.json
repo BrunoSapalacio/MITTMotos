@@ -1,19 +1,75 @@
 {
-  "posts": [
+  "users": {
+    "user": "admin",
+    "name": "Bruno S",
+    "mail": "bruno@mittmotos.com",
+    "pass": "12345",
+    "phone": "15992576544",
+    "login": true
+  },
+  "bikes": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Brendo",
+      "cpf": "11122211111",
+      "phone": "1122211111",
+      "vehicle": "Mobilete",
+      "km": 111,
+      "plate": "GAY2424",
+      "id": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Rogerio",
+      "cpf": "11111111175",
+      "phone": "1111111111",
+      "vehicle": "Mobila",
+      "km": 111233,
+      "plate": "BIBI123",
+      "id": 2
+    },
+    {
+      "name": "Bruno Sapalacio",
+      "cpf": "44444444444",
+      "phone": "2121321321",
+      "vehicle": "Fazer 150 2014",
+      "km": 55000,
+      "plate": "FQE2G86",
+      "id": 3
+    },
+    {
+      "name": "Bia",
+      "cpf": "65465465465",
+      "phone": "4323423333",
+      "vehicle": "CG Titan 160 2019",
+      "km": 22.877,
+      "plate": "QWERT55",
+      "id": 4
+    },
+    {
+      "name": "Bruno",
+      "cpf": "32345644444",
+      "phone": "1599654745",
+      "vehicle": "MT 09 2019",
+      "km": 2000,
+      "plate": "DTQ5545",
+      "id": 5
+    },
+    {
+      "plate": "FER43T5",
+      "km": 34567,
+      "vehicle": "Hornet cb600f 2012",
+      "phone": "1599744827",
+      "cpf": "45657554645",
+      "name": "Carlos",
+      "id": 6
+    },
+    {
+      "name": "aaaaa",
+      "cpf": "22222222222",
+      "phone": "2222222222",
+      "vehicle": "2222",
+      "km": 2321,
+      "plate": "2222222",
+      "id": 7
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
