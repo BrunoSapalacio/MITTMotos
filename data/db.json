@@ -1,22 +1,13 @@
 {
   "users": {
     "user": "admin",
-    "name": "Bruno S",
+    "name": "Bruno",
     "mail": "bruno@mittmotos.com",
-    "pass": "12345",
-    "phone": "15992576544",
-    "login": true
+    "pass": "123",
+    "phone": "15992544444",
+    "login": false
   },
   "bikes": [
-    {
-      "name": "Brendo",
-      "cpf": "11122211111",
-      "phone": "1122211111",
-      "vehicle": "Mobilete",
-      "km": 111,
-      "plate": "GAY2424",
-      "id": 1
-    },
     {
       "name": "Rogerio",
       "cpf": "11111111175",
@@ -63,13 +54,22 @@
       "id": 6
     },
     {
-      "name": "aaaaa",
-      "cpf": "22222222222",
-      "phone": "2222222222",
-      "vehicle": "2222",
-      "km": 2321,
-      "plate": "2222222",
-      "id": 7
+      "plate": "YUI54J3",
+      "km": 24566,
+      "vehicle": "CG 160 2019",
+      "phone": "1599767575",
+      "cpf": "23342411233",
+      "name": "João",
+      "id": 8
+    },
+    {
+      "name": "Maria",
+      "cpf": "23442331342",
+      "phone": "1599843242",
+      "vehicle": "Fazer 150 2015",
+      "km": 23334,
+      "plate": "REE3222",
+      "id": 9
     }
   ]
 }

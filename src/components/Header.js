@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'; // Cria conexao HTTP
 import { Link } from 'react-router-dom' // Cria rotas de páginas
 
 //CSS
@@ -10,19 +8,9 @@ import Profile from '../images/user.jpg'
 import IconProfile from '../icons/user.svg'
 import IconLogoff from '../icons/logoff.svg'
 
-const Header = ({ homeScreen }) => {
-    const [users, setUsers] = useState([]);
-    const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/users";
-
-    useEffect(() => { // Pega os dados da API quando o state 'user' é atualizado
-        async function getData() {
-          const response = await axios.get(url)
-            setUsers(response.data);
-        }
-        getData()
-        console.log(users)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      },[])
+const Header = ({ user, homeScreen }) => {
+    //const [users, setUsers] = useState([]);
+    //const userCollectionRef = collection(db, "users");
 
   return (
     <div className='panel-top'>
@@ -32,7 +20,9 @@ const Header = ({ homeScreen }) => {
         <div className='container-nav'>
             <img className='profile' src={Profile} alt="" />
             <ul className='nav'>
-                <p className='font-bold'>{users.name}</p>
+              {user && user.map((getUser) => (
+                <p key={getUser.id} className='font-bold'>{getUser.name}</p>
+              ))}
                 <Link to='/profile'><img className='icon-profile' src={IconProfile} alt=''/>Meu perfil</Link>
                 <Link to="" onClick={homeScreen}><img className='icon-loggof' src={IconLogoff} alt=''></img>Sair</Link>
             </ul>

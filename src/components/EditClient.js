@@ -1,9 +1,10 @@
-import React, { useState , useEffect } from 'react'
-import axios from 'axios' // Cria conexao HTTP
+import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form"; // cria formulário personalizado
 import { yupResolver } from "@hookform/resolvers/yup"; // aplica as validações no formulário
 import * as yup from "yup"; // cria validações para formulário
 import Swal from 'sweetalert2' // cria alerts personalizado
+import db from "../firebase/Database";
+import { doc, updateDoc } from "firebase/firestore";
 
 //CSS
 import './Main.css'
@@ -29,9 +30,8 @@ const EditClient = ( dataClient ) => {
     const { register,handleSubmit,formState: { errors }, reset} = useForm({
         resolver: yupResolver(schema),
       });
-    const [client] = useState(dataClient)
     console.log(dataClient)
-    console.log(client.client.id)
+    console.log(dataClient.client.id)
 
       useEffect(() => {
         // faz a solicitação do servidor assíncrono e preenche o formulário
@@ -85,16 +85,17 @@ const EditClient = ( dataClient ) => {
                         icon: 'success',
                         showConfirmButton: true,
                         confirmButtonColor: '#6393E8'
-                    }).then((result) => {
+                    }).then(async (result) => {
                         if (result.isConfirmed) {
-                            axios.put(`https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes/${client.client.id}/`, { 
-                            name: userData.name,
-                            cpf: userData.cpf,
-                            phone: userData.phone,
-                            vehicle: userData.vehicle,
-                            km: userData.km,
-                            plate: userData.plate
-                         })
+                            const clientRef = doc(db, "clients", dataClient.client.id); 
+                            await updateDoc(clientRef, {
+                              name: userData.name,
+                              cpf: userData.cpf,
+                              phone: userData.phone,
+                              vehicle: userData.vehicle,
+                              km: userData.km,
+                              plate: userData.plate
+                            })
                             document.location.reload(true)
                         }})
                 }
@@ -107,7 +108,7 @@ const EditClient = ( dataClient ) => {
 
   return (
     <div className='edit-client'>
-        <h1>Editar Cliente {client.client.id}</h1>
+        <h1>Editar Cliente {dataClient.client.name}</h1>
         <div className='client edit-card'>
         <div className='client-buttons'>
             <button className='client-close' onClick={() => close()}></button>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios"; // Cria conexao HTTP
+//import axios from "axios"; // Cria conexao HTTP
 import { useMask, presets } from "mask-hooks"; // cria mascara personalizada
 import Swal from "sweetalert2"; // cria alertas personalizado
+import db from "../firebase/Database";
+import { doc, deleteDoc } from "firebase/firestore";
 
 // CSS
 import "../pages/Panel.css";
@@ -44,13 +46,10 @@ const Clients = ({ clients }) => {
             icon: "success",
             showConfirmButton: true,
             confirmButtonColor: "#6393E8",
-          }).then((result) => {
+          }).then(async (result) => {
             if (result.isConfirmed) {
-              axios
-                .delete(`https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes/${id}`)
-                .then((response) => {
-                  console.log(response);
-                });
+              const clientDoc = doc(db, "clients", id);
+              await deleteDoc(clientDoc);
               document.location.reload(true);
             }
           });

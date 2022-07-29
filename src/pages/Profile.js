@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form"; // cria formulário personalizado
-import axios from "axios"; // Cria conexao HTTP
 import Swal from "sweetalert2"; // cria alertas personalizado
 import * as yup from "yup"; // cria validações para formulário
 import { yupResolver } from "@hookform/resolvers/yup"; // aplica as validações no formulário
 import { useMask, presets } from "mask-hooks"; // cria mascara personalizada
+import db from "../firebase/Database";
+import { doc, updateDoc } from "firebase/firestore";
 
 // Componentes
 import Header from "../components/Header";
@@ -24,35 +25,38 @@ const schema = yup
       .email("Digite um email valido"),
     pass: yup
       .string()
-      .min(3, 'Insira pelo menos 3 caracteres/números')
+      .min(3, "Insira pelo menos 3 caracteres/números")
       .required("A senha é obrigatório"),
     phone: yup
       .string()
       .required("O Telefone/Celular é obrigatório")
-      .min(11, 'Insira pelo menos 11 números'),
+      .min(11, "Insira pelo menos 11 números"),
   })
   .required();
 
-const Profile = ({ users, homeScreen }) => {
-  const { register,handleSubmit,formState: { errors }, reset} = useForm({
+const Profile = ({ user, homeScreen }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
     resolver: yupResolver(schema),
   });
   const phone = useMask(presets.PHONE_BR); // transforma a string para o formato do telefone/celular
-  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/users";
 
   useEffect(() => {
     // faz a solicitação do servidor assíncrono e preenche o formulário
     setTimeout(() => {
       reset({
-        user: "admin",
-        name: users.name,
-        mail: users.mail,
-        pass: users.pass,
-        phone: users.phone,
-        login: users.login
+        name: user[0].name,
+        mail: user[0].mail,
+        pass: user[0].pass,
+        phone: user[0].phone,
+        login: user[0].login,
       });
-    },0);
-  }, [reset, users]);
+    }, 0);
+  }, [reset, user]);
 
   const onSubmit = (userData) => {
     console.log(userData);
@@ -73,10 +77,16 @@ const Profile = ({ users, homeScreen }) => {
           icon: "success",
           showConfirmButton: true,
           confirmButtonColor: "#6393E8",
-        }).then((result) => {
+        }).then(async (result) => {
           if (result.isConfirmed) {
-            axios.post(url, userData);
-            document.location.reload(true);
+            const userRef = doc(db, "users", user[0].id);
+            await updateDoc(userRef, {
+              name: userData.name,
+              mail: userData.mail,
+              pass: userData.pass,
+              phone: userData.phone,
+            });
+            document.location.replace("/");
           }
         });
       }
@@ -87,88 +97,83 @@ const Profile = ({ users, homeScreen }) => {
     <div className="profile-container">
       <div className="panel">
         <div className="header">
-          <Header homeScreen={homeScreen}></Header>
+          <Header user={user} homeScreen={homeScreen}></Header>
         </div>
         <div className="profile-box">
-        <div className="profile-content">
-          <div className="profile-grid">
-            <div className="profile-card-1">
-              <div className="profile-img">
-                <img src={profile} alt="" />
+          <div className="profile-content">
+            <div className="profile-grid">
+              <div className="profile-card-1">
+                <div className="profile-img">
+                  <img src={profile} alt="" />
+                </div>
+                <div className="profile-info">
+                  <span className="font-bold">
+                    {user[0].name}
+                    <p className="font-regular">Administrador</p>
+                  </span>
+                  <hr />
+                  <p className="font-bold">Email</p>
+                  <p>{user[0].mail}</p>
+                  <p className="font-bold">Senha</p>
+                  <p>{user[0].pass}</p>
+                  <p className="font-bold">Telefone</p>
+                  <p>{phone(user[0].phone)}</p>
+                </div>
               </div>
-              <div className="profile-info">
-                <span className="font-bold">
-                  {users.name}<p className="font-regular">Administrador</p>
-                </span>
-                <hr />
-                <p className="font-bold">Email</p>
-                <p>{users.mail}</p>
-                <p className="font-bold">Senha</p>
-                <p>{users.pass}</p>
-                <p className="font-bold">Telefone</p>
-                <p>{phone(users.phone)}</p>
+              <div className="profile-card-2">
+                <h1>Meu perfil</h1>
+                <form
+                  className="profile-form"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
+                  <label>
+                    <p>Nome:</p>
+                    <input
+                      type="text"
+                      placeholder="Nome do administrador"
+                      {...register("name", { required: true })}
+                    />{" "}
+                    {/*Joga os dados da input no objeto 'name'*/}
+                    {errors.name && <span>{errors.name?.message}</span>}
+                  </label>
+                  <label>
+                    <p>Email:</p>
+                    <input
+                      type="text"
+                      placeholder="Email do administrador"
+                      {...register("mail", { required: true })}
+                    />{" "}
+                    {/*Joga os dados da input no objeto 'name'*/}
+                    {errors.mail && <span>{errors.mail?.message}</span>}
+                  </label>
+                  <label>
+                    <p>Senha:</p>
+                    <input
+                      type="text"
+                      placeholder="Nome do proprietário"
+                      {...register("pass", { required: true })}
+                    />{" "}
+                    {/*Joga os dados da input no objeto 'name'*/}
+                    {errors.pass && <span>{errors.pass?.message}</span>}
+                  </label>
+                  <label>
+                    <p>Telefone:</p>
+                    <input
+                      type="text"
+                      maxLength={11}
+                      placeholder="Nome do proprietário"
+                      {...register("phone", { required: true })}
+                    />{" "}
+                    {/*Joga os dados da input no objeto 'name'*/}
+                    {errors.phone && <span>{errors.phone?.message}</span>}
+                  </label>
+                  <button className="client-info button-profile font-bold">
+                    SALVAR
+                  </button>
+                </form>
               </div>
-            </div>
-            <div className="profile-card-2">
-              <h1>Meu perfil</h1>
-              <form className="profile-form" onSubmit={handleSubmit(onSubmit)}>
-                <label>
-                <p>Nome:</p>
-                <input
-                  type="text"
-                  placeholder="Nome do administrador"
-                  {...register("name", { required: true })}
-                />{" "}
-                {/*Joga os dados da input no objeto 'name'*/}
-                {errors.name && (
-                  <span>{errors.name?.message}</span>
-                )}
-                </label>
-                <label>
-                <p>Email:</p>
-                <input
-                  type="text"
-                  placeholder="Email do administrador"
-                  {...register("mail", { required: true })}
-                />{" "}
-                {/*Joga os dados da input no objeto 'name'*/}
-                {errors.mail && (
-                  <span>{errors.mail?.message}</span>
-                )}
-                </label>
-                <label>
-                <p>Senha:</p>
-                <input
-                  type="text"
-                  placeholder="Nome do proprietário"
-                  {...register("pass", { required: true })}
-                />{" "}
-                {/*Joga os dados da input no objeto 'name'*/}
-                {errors.pass && (
-                  <span>{errors.pass?.message}</span>
-                )}
-                </label>
-                <label>
-                <p>Telefone:</p>
-                <input
-                  type="text"
-                  maxLength = {11}
-                  placeholder="Nome do proprietário"
-                  {...register("phone", { required: true })}
-                />{" "}
-                {/*Joga os dados da input no objeto 'name'*/}
-                {errors.phone && (
-                  <span>{errors.phone?.message}</span>
-                )}
-                </label>
-                <button
-                  className="client-info button-profile font-bold"
-                  >SALVAR
-                </button>
-              </form>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ import "./Home.css";
 const Home = () => {
   const { register,handleSubmit, reset} = useForm();
   const [users, setUsers] = useState([]);
-  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/users";
+  const url = "http://localhost:3000/users";
 
   useEffect(() => {
     // faz a solicitação do servidor assíncrono e preenche o formulário

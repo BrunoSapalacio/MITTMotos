@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Cria rotas de páginas
-import axios from "axios"; // Cria conexao HTTP
+import db from "./firebase/Database";
+import {collection, getDocs } from "firebase/firestore";
 
 // CSS
 import "./App.css";
@@ -12,22 +13,22 @@ import Profile from "./pages/Profile";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/users";
+  const userCollectionRef = collection(db, "users");
+  //const url = "http://localhost:3000/users";
 
   useEffect(() => {
-    // Pega os dados da API
-    async function getData() {
-      const response = await axios.get(url);
-      setUsers(response.data);
+    const getUsers = async () => {
+      const data = await getDocs(userCollectionRef);
+      setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     }
-    getData();
+    getUsers();
     console.log(users);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const homeScreen = () => {
     // Muda para a tela de login
-    axios.patch(url, { login: false });
+    //axios.patch(url, { login: false });
     //document.location.reload(true)
     document.location.replace("/");
   };
@@ -47,7 +48,7 @@ function App() {
           )}
           <Route
             path="/profile"
-            element={<Profile users={users} homeScreen={homeScreen} />}
+            element={<Profile user={users} homeScreen={homeScreen} />}
           />
         </Routes>
       </BrowserRouter>

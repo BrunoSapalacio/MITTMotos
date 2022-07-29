@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"; // cria formulário personalizado
-import axios from "axios"; // Cria conexao HTTP
 import * as yup from "yup"; // cria validações para formulário
 import { yupResolver } from "@hookform/resolvers/yup"; // aplica as validações no formulário
 import Swal from "sweetalert2"; // cria alertas personalizado
+import db from "../firebase/Database";
+import {collection, addDoc, getDocs } from "firebase/firestore";
 
 // CSS
 import "./Panel.css";
@@ -44,24 +45,24 @@ const Panel = ({ homeScreen }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   const [clients, setClients] = useState([]);
-  const url = "https://my-json-server.typicode.com/BrunoSapalacio/MITTMotos/bikes";
+  const [users, setUsers] = useState([]);
+  const clientsCollectionRef = collection(db, "clients");
+  const userCollectionRef = collection(db, "users");
 
   useEffect(() => {
-    // Pega os dados da API quando o state 'user' é atualizado
-    async function getData() {
-      try {
-        const response = await axios.get(url);
-        setClients(response.data);
-        //console.log(typeof clients)
-      } catch {
-        console.log("Ocorreu um erro ao carregar os dados!");
-      }
+    const getClientsAndUsers = async () => {
+      const dataClients = await getDocs(clientsCollectionRef);
+      const dataUsers = await getDocs(userCollectionRef);
+      setClients(dataClients.docs.map((doc) => ({...doc.data(), id: doc.id})));
+      setUsers(dataUsers.docs.map((doc) => ({...doc.data(), id: doc.id})));
     }
-    getData();
+    getClientsAndUsers();
     console.log(clients);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   const onSubmit = async (userData) => {
     let plate = null;
@@ -100,9 +101,10 @@ const Panel = ({ homeScreen }) => {
               icon: "success",
               showConfirmButton: true,
               confirmButtonColor: "#6393E8",
-            }).then((result) => {
+            }).then(async (result) => {
               if (result.isConfirmed) {
-                axios.post(url, userData);
+                await addDoc(clientsCollectionRef, userData);
+                console.log(userData);
                 document.location.reload(true);
               }
             });
@@ -119,7 +121,7 @@ const Panel = ({ homeScreen }) => {
   return (
     <div className="panel">
       <div className="header">
-        <Header homeScreen={homeScreen}></Header>
+        <Header user={users} homeScreen={homeScreen} ></Header>
         <div className="register-client">
           <h1 className="font-regular">Cadastro de Clientes</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
