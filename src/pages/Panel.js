@@ -4,7 +4,7 @@ import * as yup from "yup"; // cria validações para formulário
 import { yupResolver } from "@hookform/resolvers/yup"; // aplica as validações no formulário
 import Swal from "sweetalert2"; // cria alertas personalizado
 import db from "../firebase/Database";
-import {collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 // CSS
 import "./Panel.css";
@@ -12,6 +12,9 @@ import "./Panel.css";
 //Componentes
 import Clients from "../components/Clients";
 import Header from "../components/Header";
+
+// Hooks
+import useAuth from "../hooks/useAuth";
 
 const schema = yup
   .object({
@@ -37,7 +40,7 @@ const schema = yup
   })
   .required();
 
-const Panel = ({ homeScreen }) => {
+const Panel = () => {
   const {
     register,
     handleSubmit,
@@ -47,22 +50,20 @@ const Panel = ({ homeScreen }) => {
   });
 
   const [clients, setClients] = useState([]);
-  const [users, setUsers] = useState([]);
   const clientsCollectionRef = collection(db, "clients");
-  const userCollectionRef = collection(db, "users");
+  const { user } = useAuth();
 
   useEffect(() => {
     const getClientsAndUsers = async () => {
       const dataClients = await getDocs(clientsCollectionRef);
-      const dataUsers = await getDocs(userCollectionRef);
-      setClients(dataClients.docs.map((doc) => ({...doc.data(), id: doc.id})));
-      setUsers(dataUsers.docs.map((doc) => ({...doc.data(), id: doc.id})));
-    }
+      setClients(
+        dataClients.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    };
     getClientsAndUsers();
     console.log(clients);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   const onSubmit = async (userData) => {
     let plate = null;
@@ -82,7 +83,21 @@ const Panel = ({ homeScreen }) => {
       });
     if (plate === null) {
       try {
-        console.log(userData);
+        const today = new Date();
+        let userDataNew = userData;
+        const userCreated = {
+          today: today.toLocaleDateString(),
+          hoursMinutes: today.getHours() + ":" + today.getMinutes(),
+          name: user.name,
+        };
+        const userUpdate = {
+          name: "",
+          today: "",
+          hoursMinutes: "",
+        };
+        userDataNew.create = userCreated;
+        userDataNew.update = userUpdate;
+        console.log(userDataNew);
         // Função que manda os dados para a API
         Swal.fire({
           title: "MITT Motos",
@@ -103,8 +118,7 @@ const Panel = ({ homeScreen }) => {
               confirmButtonColor: "#6393E8",
             }).then(async (result) => {
               if (result.isConfirmed) {
-                await addDoc(clientsCollectionRef, userData);
-                console.log(userData);
+                await addDoc(clientsCollectionRef, userDataNew);
                 document.location.reload(true);
               }
             });
@@ -121,7 +135,7 @@ const Panel = ({ homeScreen }) => {
   return (
     <div className="panel">
       <div className="header">
-        <Header user={users} homeScreen={homeScreen} ></Header>
+        <Header></Header>
         <div className="register-client">
           <h1 className="font-regular">Cadastro de Clientes</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -179,9 +193,9 @@ const Panel = ({ homeScreen }) => {
                 <input
                   type="number"
                   placeholder="Kilometragem"
-                  {...register("km", { 
+                  {...register("km", {
                     required: true,
-                    onChange: (v) => Math.abs(v)
+                    onChange: (v) => Math.abs(v),
                   })}
                 />
                 {errors.km && (

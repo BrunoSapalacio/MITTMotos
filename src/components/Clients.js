@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-//import axios from "axios"; // Cria conexao HTTP
 import { useMask, presets } from "mask-hooks"; // cria mascara personalizada
 import Swal from "sweetalert2"; // cria alertas personalizado
 import db from "../firebase/Database";
@@ -163,6 +162,7 @@ const Clients = ({ clients }) => {
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
                               Km
                             </p>
+                            <p>...</p>
                           </div>
                           <button
                             className="client-info font-bold"
@@ -230,6 +230,7 @@ const Clients = ({ clients }) => {
                                   .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
                                 Km
                               </p>
+                              <p className="font-bold">...</p>
                             </div>
                             <button
                               className="client-info font-bold"

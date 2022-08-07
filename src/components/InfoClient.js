@@ -1,9 +1,10 @@
-import { useMask, presets } from 'mask-hooks'; // Cria mascara personalizada
+import { useMask, presets } from "mask-hooks"; // Cria mascara personalizada
 
 //CSS
-import './Main.css'
+import "./Main.css";
 
 const InfoClient = (dataClient) => {
+  console.log(dataClient.client.update)
   const cpf = useMask(presets.DOCUMENT_CPF); // Transforma a string para o formato do cpf
   const phone = useMask(presets.PHONE_BR); // Transforma a string para o formato do telefone/celular
 
@@ -31,7 +32,26 @@ const InfoClient = (dataClient) => {
           <div className="client-prop-edit">
             <h4 className="info-title">MOTO</h4>
             <p>Modelo: {dataClient.client.vehicle}</p>
-            <p>Kilometragem: {dataClient.client.km.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} Km</p> {/* função que formata numero */}
+            <p>
+              Kilometragem:{" "}
+              {dataClient.client.km
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
+              Km
+            </p>{" "}
+          </div>
+          <div className="client-prop-edit">
+            <h4 className="info-title">REGISTRO</h4>
+            <p>Cadastro criado pelo(a): {dataClient.client.create.name}</p>
+            <p>Data: {dataClient.client.create.today}</p>
+            <p>Horário: {dataClient.client.create.hoursMinutes}</p>
+            <br/>
+            {dataClient.client.update.name !== '' &&
+            <strong className="info-update">
+              <p>*Cadastro atualizado pelo(a): {dataClient.client.update.name}*</p>
+              <p>Data: {dataClient.client.update.today}</p>
+              <p>Horário: {dataClient.client.update.hoursMinutes}</p>
+            </strong> }
           </div>
         </div>
       </div>

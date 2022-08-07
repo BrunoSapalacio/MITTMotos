@@ -1,102 +1,38 @@
-import { useState, useEffect } from "react";
-import axios from "axios"; // Cria conexao HTTP
-import { useForm } from "react-hook-form"; // cria formulário personalizado
-import Swal from "sweetalert2"; // cria alertas personalizado
+import { useState} from "react";
 
 //Imagem
-import People from "../images/People.jpg";
+import Motorcycle from "../images/Motorcycle.png";
 
 //CSS
 import "./Home.css";
 
+//Componentes
+import Register from "../components/Register";
+import Login from "../components/Login";
+
 const Home = () => {
-  const { register,handleSubmit, reset} = useForm();
-  const [users, setUsers] = useState([]);
-  const url = "http://localhost:3000/users";
+  const [home, setHome] = useState("Login");
 
-  useEffect(() => {
-    // faz a solicitação do servidor assíncrono e preenche o formulário
-    setTimeout(() => {
-      async function getData() {
-        const response = await axios.get(url);
-        setUsers(response.data);
-      }
-      getData();
-      reset({
-        user: users.user,
-        pass: users.pass
-      });
-    },0);
-  }, [reset, users.pass, users.user]);
-
-  const onSubmit = async (userData) => {
-    console.log(userData)
-    //e.preventDefault()
-    if (userData.user === users.user && userData.pass === users.pass) {
-      Swal.fire({
-        title: "Logado com sucesso!",
-        icon: "success",
-        showConfirmButton: false,
-      });
-      setTimeout(() => panelScreen(), 2000);
-    } else {
-      Swal.fire({
-        title: "MITT Motos",
-        text: "Usuário ou senha incorreta!",
-        icon: "error",
-        showConfirmButton: true,
-        confirmButtonColor: "#6393E8",
-      });
-    }
-  };
-
-  const panelScreen = async () => {// Muda para a tela de painel
-    try {
-      axios.patch(url, { login: true });
-      document.location.reload(true);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const stateLogin = () => setHome("Login");
+  const stateRegister = () => setHome("Register");
 
   return (
     <div className="content">
       {/* Imagem home */}
       <div className="image">
-        <img src={People} alt="Pessoa" />
+        <img src={Motorcycle} alt="Moto" />
       </div>
       {/* Login */}
-        <div className="login">
-          <div>
-            <h1>MITT Motos</h1>
-            <div className="info-login">
-              <h3>Informações de acesso</h3>
-              <p>Usuário: {users.user}</p>
-              <p>Senha: {users.pass}</p>
-              </div>
-            <h2>Login</h2>
-            <div className="content-login">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <label className="input-icon-user">
-                  <div></div>
-                  <input
-                  type="text"
-                  placeholder="Digite o usuário"
-                  {...register("user")}/>
-                </label>
-                <label className="input-icon-pass">
-                  <div></div>
-                  <input
-                  type="password"
-                  placeholder="Digite a senha"
-                  {...register("pass")}/>
-                </label>
-                <input type="submit" className="BoxInput-2" value="LOGAR" />
-              </form>
-            </div>
-          </div>
-          <p>© Bruno Sapalacio</p>
-        </div>
+      <div className="home">
+        {home && home === "Login" ? (
+          <Login state={stateRegister}></Login>
+        ) : (
+          <Register state={stateLogin}></Register>
+        )}
+        <footer className="footer-home">
+          <h3>© Bruno Sapalacio</h3>
+        </footer>
+      </div>
     </div>
   );
 };

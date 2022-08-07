@@ -23,6 +23,10 @@ button, input[type=submit] {
   cursor: pointer;
 }
 
+button:hover, input[type=submit]:hover {
+  filter: brightness(130%);
+}
+
 a {
   text-decoration: none;
 }

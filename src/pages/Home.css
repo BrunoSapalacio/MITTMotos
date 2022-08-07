@@ -3,24 +3,31 @@
         display: none!important;
     }
 
-    .login {
+    .home {
         width: 100%!important;
+    }
+
+    .home > div {
+        width: 80%!important;
     }
 }
 
-/* ============================== Home.js ============================== */
 .content {
     display: flex;
     justify-content: space-between;
     width: 100vw;
 }
 
-.image, .login {
+.image, .home {
     width: 50%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.image {
+    background: rgb(48,99,189);
+    background: linear-gradient(90deg, rgba(48,99,189,1) 0%, rgba(74,124,214,1) 35%, rgba(99,147,232,1) 100%);
 }
 
 .image img {
@@ -29,23 +36,37 @@
     max-width: 70%;
 }
 
-.login {
-    background-color: #6393E8;
-    color: #fff;
+.home {
+    background-color: #FFF;
+    color: #6393E8;
     display: flex;
     flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.login > div {
+.home > div {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 60%;
 }
 
-.login h1 {
+.home div h5 {
+    font-size: 1.2em;
+    letter-spacing: 0.155em;
+    font-weight: 400;
+}
+
+.home div h1 {
     font-size: 3em;
-    margin-bottom: 0.4em;
+    margin-bottom: 1em;
+}
+
+.home div h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
 }
 
 .info-login {
@@ -62,9 +83,9 @@
     font-size: 1.2em;
 }
 
-.login h2 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
+.footer-home {
+    position: absolute;
+    bottom: 2em;
 }
 
 /* ============================== Login.js & Register.js ============================== */
@@ -75,55 +96,95 @@ form {
     flex-direction: column;
 }
 
-.input-icon-user, .input-icon-pass{
-    display: flex;
-    height: 2.7em;
-    margin-bottom: 1em;
-    background-color: #fff;
+.label-home {
+    height: 4.5em;
 }
 
-.input-icon-user div , .input-icon-pass div {
+.input-home{
+    display: flex;
+    height: 2.7em;
+    background-color: rgb(238, 238, 238);
+    border-radius: 5px;
+}
+
+.input-home > span {
+    position: absolute;
+}
+
+.input-home input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(238, 238, 238);
+}
+
+.label-home span {
+    color: red;
+}
+
+.icon-user, .icon-pass, .icon-mail {
     width: 60px;
     background-size: 1em;
 }
 
-.input-icon-user div {
+.icon-user {
     background: url(../icons/user.svg) center no-repeat;
     background-size: 1.8em;
 
 }
 
-.input-icon-pass div {
+.icon-pass {
     background: url(../icons/pass.svg) center no-repeat;
     background-size: 1.4em;
 }
 
-.input-icon-user input, .input-icon-pass input {
-    width: 100%;
-    border: none;
+.icon-mail {
+    background: url(../icons/mail.svg) center no-repeat;
+    background-size: 1.4em;
 }
+
 
 .BoxInput {
     padding-left: 1.5em;
 }
 
-.BoxInput, .BoxInput-2 {
+.BoxInput-1, .BoxInput-2 {
     width: 100%;
     border: none;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.BoxInput-2 {
+    transition: all 0.3s ease-out;
     height: 3.5em;
-    background-color: #003399;
     color: #fff;
     border: none;
     border-radius: 5px;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+}
+
+.BoxInput-1 {
+    background-color: #131313;
+}
+
+.BoxInput-2 {
+    background-color: #003399;
 }
 
 textarea:focus, input:focus {
     outline: 0;
+}
+
+.content-login a {
+    font-weight: 600;
+    color: #6393E8;
+}
+
+.content-login > div {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.content-login > form > p {
+    margin-bottom: 1em;
 }
 
 .BoxCheck {

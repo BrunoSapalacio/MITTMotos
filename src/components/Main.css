@@ -125,6 +125,12 @@
     margin: 0.5em 0 !important;
 }
 
+.info-update {
+    padding: 1em;
+    background-color: #d4ffbb;
+    border: 1px solid #799d64;
+}
+
 /* ======================= Header.js ================== */
 
 .header {
