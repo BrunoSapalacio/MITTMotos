@@ -1,11 +1,12 @@
 @media (max-width: 480px) {
     .profile-grid {
         flex-direction: column;
-        height: 100%!important;
+        height: 100% !important;
     }
 
-    .profile-card-1, .profile-card-2 {
-        width: 100%!important;
+    .profile-card-1,
+    .profile-card-2 {
+        width: 100% !important;
         margin: 1.5em 0;
     }
 
@@ -14,11 +15,11 @@
     }
 
     .profile-box {
-        height: 70%!important;
+        height: 70% !important;
     }
 
     .panel {
-        height: auto!important;
+        height: auto !important;
     }
 }
 
@@ -47,7 +48,7 @@
     align-items: center;
 }
 
-.profile-content  h1 {
+.profile-content h1 {
     margin: 1em;
     color: #fff;
 }
@@ -119,7 +120,7 @@
     margin-bottom: 1.5em;
 }
 
-.profile-form input {
+.profile-form>label>input {
     width: 95%;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -134,12 +135,23 @@
 }
 
 .button-profile {
-    width: 50%;
-    margin: 2em auto;
+    width: 100%;
+    border: none;
+    box-shadow: inset 0px 4px 4px rgb(0 0 0 / 25%);
+    transition: all 0.3s ease-out;
+    height: 3.5em;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 1em;
     transition: all 0.3s ease-out;
 }
 
-.button-profile:hover {
+.b-black {
+    background-color: #434343;
+}
+
+.b-green {
+    width: 80% !important;
     background-color: #48813b;
 }
 

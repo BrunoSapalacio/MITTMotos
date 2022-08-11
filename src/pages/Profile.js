@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form"; // cria formulário personalizado
-//import Swal from "sweetalert2"; // cria alertas personalizado
+import Swal from "sweetalert2"; // cria alertas personalizado
 import * as yup from "yup"; // cria validações para formulário
 import { yupResolver } from "@hookform/resolvers/yup"; // aplica as validações no formulário
-import { getAuth, updateProfile, updatePassword } from "firebase/auth";
+import {
+  getAuth,
+  updateProfile,
+  updatePassword,
+  updateEmail,
+} from "firebase/auth";
 
+// Hooks
 import useAuth from "../hooks/useAuth";
 
 // Componentes
@@ -19,18 +25,10 @@ import profile from "../images/user.jpg";
 const schema = yup
   .object({
     name: yup.string("Digite um nome válido").required("O nome é obrigatório"),
-    mail: yup
+    email: yup
       .string()
       .required("O email é obrigatório")
       .email("Digite um email valido"),
-    pass: yup
-      .string()
-      .min(3, "Insira pelo menos 3 caracteres/números")
-      .required("A senha é obrigatório"),
-    phone: yup
-      .string()
-      .required("O Telefone/Celular é obrigatório")
-      .min(11, "Insira pelo menos 11 números"),
   })
   .required();
 
@@ -44,6 +42,7 @@ const Profile = () => {
     resolver: yupResolver(schema),
   });
   const { user } = useAuth();
+  const auth = getAuth();
 
   useEffect(() => {
     // faz a solicitação do servidor assíncrono e preenche o formulário
@@ -56,29 +55,87 @@ const Profile = () => {
     }, 0);
   }, [reset, user]);
 
+  const onError = (errors, e) => console.log(errors, e);
+
   const onSubmit = (userData) => {
-    const auth = getAuth();
+    console.log(auth.currentUser);
     updateProfile(auth.currentUser, {
       displayName: userData.name,
-      email: userData.email,
     })
       .then(() => {
-        // Profile updated!
-        console.log("Sucesso!");
-        // ...
+        updateEmail(auth.currentUser, userData.email)
+          .then(() => {
+            Swal.fire({
+              title: "MITT Motos",
+              text: "Perfil atualizado com sucesso!",
+              icon: "success",
+              showConfirmButton: true,
+              confirmButtonColor: "#6393E8",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                document.location.reload(true);
+              }
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+            Swal.fire({
+              title: "MITT Motos",
+              html: "Foi verificado que você já está há um tempo logado no sistema. Por questões de segurança, refaça o login para poder atualizar o <strong>EMAIL.</strong>",
+              icon: "warning",
+              showConfirmButton: true,
+              confirmButtonColor: "#6393E8",
+            });
+          });
       })
       .catch((error) => {
         console.log(error);
-        // ...
       });
-    updatePassword(auth.currentUser, userData.pass)
-      .then(() => {
-        // Update successful.
-      })
-      .catch((error) => {
-        // An error ocurred
-        // ...
-      });
+  };
+
+  const changePass = async () => {
+    const { value: password } = await Swal.fire({
+      title: "MITT Motos",
+      input: "password",
+      inputLabel: "Nova senha:",
+      inputPlaceholder: "Digite a sua nova senha",
+      confirmButtonColor: "#6393E8",
+      showCancelButton: true,
+      cancelButtonColor: "#d33",
+      inputAttributes: {
+        maxlength: 10,
+        autocapitalize: "off",
+        autocorrect: "off",
+      },
+      inputValidator: (value) => {
+        if (value.length < 6) {
+          return "Insira pelo menos 6 caracteres";
+        }
+      },
+    });
+
+    if (password) {
+      updatePassword(auth.currentUser, password)
+        .then(() => {
+          Swal.fire({
+            title: "MITT Motos",
+            text: "Senha atualizada com sucesso!",
+            icon: "success",
+            showConfirmButton: true,
+            confirmButtonColor: "#6393E8",
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
+            title: "MITT Motos",
+            html: "Foi verificado que você já está há um tempo logado no sistema. Por questões de segurança, refaça o login para poder alterar a <strong>SENHA.</strong>",
+            icon: "warning",
+            showConfirmButton: true,
+            confirmButtonColor: "#6393E8",
+          });
+        });
+    }
   };
 
   return (
@@ -95,10 +152,7 @@ const Profile = () => {
                   <img src={profile} alt="" />
                 </div>
                 <div className="profile-info">
-                  <span className="font-bold">
-                    {user.name}
-                    <p className="font-regular">{user.userType}</p>
-                  </span>
+                  <span className="font-bold">{user.name}</span>
                   <hr />
                   <p className="font-bold">ID</p>
                   <p>{user.id}</p>
@@ -110,7 +164,7 @@ const Profile = () => {
                 <h1>Meu perfil</h1>
                 <form
                   className="profile-form"
-                  onSubmit={handleSubmit(onSubmit)}
+                  onSubmit={handleSubmit(onSubmit, onError)}
                 >
                   <label>
                     <p>Nome:</p>
@@ -129,23 +183,17 @@ const Profile = () => {
                       placeholder="Email do administrador"
                       {...register("email", { required: true })}
                     />{" "}
-                    {/*Joga os dados da input no objeto 'name'*/}
                     {errors.email && <span>{errors.email?.message}</span>}
                   </label>
-                  <label>
-                    <p>Senha:</p>
-                    <input
-                      type="text"
-                      placeholder="Nome do proprietário"
-                      {...register("pass", { required: true })}
-                    />{" "}
-                    {/*Joga os dados da input no objeto 'name'*/}
-                    {errors.pass && <span>{errors.pass?.message}</span>}
-                  </label>
-                  <button className="client-info button-profile font-bold">
-                    ATUALIZAR
-                  </button>
+                  <input
+                    type="submit"
+                    className="button-profile b-black"
+                    value="ATUALIZAR"
+                  />
                 </form>
+                <button className="button-profile b-green" onClick={changePass}>
+                  ALTERAR SENHA
+                </button>
               </div>
             </div>
           </div>

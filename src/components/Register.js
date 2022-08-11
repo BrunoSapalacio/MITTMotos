@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form"; // cria formulário personalizado
 import * as yup from "yup"; // cria validações para formulário
@@ -8,7 +7,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
-  signOut
+  signOut,
 } from "firebase/auth";
 
 //CSS
@@ -50,17 +49,14 @@ const Register = ({ state }) => {
           displayName: userData.user,
         })
           .then(() => {
-            // Profile updated!
             console.log("Sucesso!");
-            // ...
           })
           .catch((error) => {
             console.log(error);
-            // ...
           });
         Swal.fire({
           title: "MITT Motos",
-          text: "A Conta foi cadastrada com sucesso.",
+          text: "A Conta foi criada com sucesso.",
           icon: "success",
           showConfirmButton: true,
           confirmButtonColor: "#6393E8",
@@ -68,12 +64,11 @@ const Register = ({ state }) => {
           if (result.isConfirmed) {
             const auth = getAuth();
             signOut(auth)
-              .then(() => {
-              })
+              .then(() => {})
               .catch((error) => {
                 console.log(error);
               });
-            state(); 
+            state();
           }
         });
       })
@@ -93,7 +88,6 @@ const Register = ({ state }) => {
             confirmButtonColor: "#6393E8",
           });
         }
-        // ..
       });
   };
 

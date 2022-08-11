@@ -26,10 +26,14 @@ const Header = () => {
       });
   };
 
+  const returnPanel = () => {
+    document.location.replace("/");
+  };
+
   return (
     <div className="panel-top">
       <div className="title">
-        <Link to="/">
+        <Link to="" onClick={returnPanel}>
           <h1>MITT Motos</h1>
         </Link>
       </div>

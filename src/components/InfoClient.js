@@ -4,7 +4,7 @@ import { useMask, presets } from "mask-hooks"; // Cria mascara personalizada
 import "./Main.css";
 
 const InfoClient = (dataClient) => {
-  console.log(dataClient.client.update)
+  console.log(dataClient.client.update);
   const cpf = useMask(presets.DOCUMENT_CPF); // Transforma a string para o formato do cpf
   const phone = useMask(presets.PHONE_BR); // Transforma a string para o formato do telefone/celular
 
@@ -14,7 +14,10 @@ const InfoClient = (dataClient) => {
 
   return (
     <div className="edit-client">
-      <h1>Informações do Cliente {dataClient.client.name}</h1>
+      <h1>
+        Informações do(a) Cliente{" "}
+        <span className="client-title-info">{dataClient.client.name}</span>
+      </h1>
       <div className="client edit-card info-box">
         <div className="client-buttons">
           <button className="client-close" onClick={() => close()}></button>
@@ -45,13 +48,16 @@ const InfoClient = (dataClient) => {
             <p>Cadastro criado pelo(a): {dataClient.client.create.name}</p>
             <p>Data: {dataClient.client.create.today}</p>
             <p>Horário: {dataClient.client.create.hoursMinutes}</p>
-            <br/>
-            {dataClient.client.update.name !== '' &&
-            <strong className="info-update">
-              <p>*Cadastro atualizado pelo(a): {dataClient.client.update.name}*</p>
-              <p>Data: {dataClient.client.update.today}</p>
-              <p>Horário: {dataClient.client.update.hoursMinutes}</p>
-            </strong> }
+            <br />
+            {dataClient.client.update.name !== "" && (
+              <strong className="info-update">
+                <p>
+                  *Cadastro atualizado pelo(a): {dataClient.client.update.name}*
+                </p>
+                <p>Data: {dataClient.client.update.today}</p>
+                <p>Horário: {dataClient.client.update.hoursMinutes}</p>
+              </strong>
+            )}
           </div>
         </div>
       </div>

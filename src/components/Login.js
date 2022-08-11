@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form"; // cria formulário personalizado
 import * as yup from "yup"; // cria validações para formulário
 import { yupResolver } from "@hookform/resolvers/yup"; // aplica as validações no formulário
 import Swal from "sweetalert2"; // cria alertas personalizado
-import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 //CSS
 import "../pages/Home.css";
@@ -11,7 +10,10 @@ import useAuth from "../hooks/useAuth";
 
 const schema = yup
   .object({
-    mail: yup.string().required("O email é obrigatório").email("Digite um email valido"),
+    mail: yup
+      .string()
+      .required("O email é obrigatório")
+      .email("Digite um email valido"),
     pass: yup.string().required("A senha é obrigatório"),
   })
   .required();
@@ -28,7 +30,6 @@ const Login = ({ state }) => {
   const { user, setUser } = useAuth();
   console.log(user);
 
-
   const onSubmit = async (userData) => {
     let errorMessageAuth;
     await signInWithEmailAndPassword(auth, userData.mail, userData.pass)
@@ -37,35 +38,34 @@ const Login = ({ state }) => {
         document.location.replace("/");
         const userFB = userCredential.user;
         const { uid, displayName, email } = userFB;
-         return setUser({
-            id: uid,
-            name: displayName,
-            email: email,
-          });
+        return setUser({
+          id: uid,
+          name: displayName,
+          email: email,
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, "+", errorMessage);
-        if (errorCode === 'auth/user-not-found') {
-          errorMessageAuth = 'Usuário não cadastrado.'        
-        }
-        else if (errorCode === 'auth/wrong-password') {
-          errorMessageAuth = 'Senha incorreta.'        
-        }
-        else if (errorCode === 'auth/too-many-requests') {
-          errorMessageAuth = 'O acesso a esta conta foi temporariamente desativado devido a muitas tentativas de login com falha. Você pode restaurá-lo imediatamente redefinindo sua senha ou pode tentar novamente mais tarde.'        
+        if (errorCode === "auth/user-not-found") {
+          errorMessageAuth = "Usuário não cadastrado.";
+        } else if (errorCode === "auth/wrong-password") {
+          errorMessageAuth = "Senha incorreta.";
+        } else if (errorCode === "auth/too-many-requests") {
+          errorMessageAuth =
+            "O acesso a esta conta foi temporariamente desativado devido a muitas tentativas de login com falha. Você pode restaurá-lo imediatamente redefinindo sua senha ou pode tentar novamente mais tarde.";
         }
         if (errorCode) {
           Swal.fire({
-          title: "MITT Motos",
-          text: errorMessageAuth,
-          icon: "error",
-          showConfirmButton: true,
-          confirmButtonColor: "#6393E8",
-        });
-      }
-    });
+            title: "MITT Motos",
+            text: errorMessageAuth,
+            icon: "error",
+            showConfirmButton: true,
+            confirmButtonColor: "#6393E8",
+          });
+        }
+      });
   };
 
   return (

@@ -1,16 +1,18 @@
 @media (max-width: 480px) {
     .grid {
-        display: grid!important;
-        grid-template-columns: repeat(1, 1fr)!important;
-        grid-template-rows: none!important;
-        grid-column-gap: 0!important;
-        grid-row-gap: 0!important;
+        display: grid !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+        grid-template-rows: none !important;
+        grid-column-gap: 0 !important;
+        grid-row-gap: 0 !important;
     }
+
     .client-header {
-        width: 90%!important;
+        width: 90% !important;
     }
+
     .grid label {
-        height: 4.1em!important;
+        height: 4.1em !important;
     }
 }
 
@@ -20,6 +22,7 @@
     background-color: #F3F3F3;
     height: 100%;
 }
+
 /* ======================= Formulario Clientes ================== */
 .register-client {
     width: 100vw;
@@ -59,7 +62,8 @@
     font-size: 0.8em;
 }
 
-.grid input, .submit {
+.grid input,
+.submit {
     width: 20em;
     text-align: center;
     border: 1px solid #CDCDCD;
@@ -79,6 +83,10 @@
 
 .submit:hover {
     background-color: #272626;
+}
+
+.plate-text {
+    text-transform: uppercase;
 }
 
 /* ======================= Lista de Clientes ================== */
@@ -151,6 +159,7 @@
     flex-wrap: wrap;
     width: 100%
 }
+
 .client {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -180,7 +189,8 @@
     width: 100%;
 }
 
-.client-edit, .client-close {
+.client-edit,
+.client-close {
     width: 2em;
     height: 2em;
     border: none;
@@ -221,6 +231,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .clients-flex li h4 {
@@ -230,10 +241,12 @@
 }
 
 .clients-flex li p {
-    color: #434343;;
+    color: #434343;
+    ;
 }
 
-.client-prop, .client-bike {
+.client-prop,
+.client-bike {
     margin-bottom: 1em;
 }
 

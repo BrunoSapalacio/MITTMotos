@@ -133,7 +133,10 @@ const EditClient = (dataClient) => {
 
   return (
     <div className="edit-client">
-      <h1>Editar Cliente {dataClient.client.name}</h1>
+      <h1>
+        Editar Cliente{" "}
+        <span className="client-title-info">{dataClient.client.name}</span>
+      </h1>
       <div className="client edit-card">
         <div className="client-buttons">
           <button className="client-close" onClick={() => close()}></button>

@@ -9,26 +9,24 @@ export default function AuthContextProvider(props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-     const getUser = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log(user)
-          const { uid, displayName, email } = user;
-          const userType = email === 'admin@mittmotos.com' ? 'Administrador' : 'Suporte';
-          setUser({
-            id: uid,
-            name: displayName,
-            email: email,
-            userType: userType,
-          });
-        } else {
-          console.log('não logado');
-          setUser(null);
-        }
-        setLoading(false);
-      });
+    const getUser = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user);
+        const { uid, displayName, email } = user;
+        setUser({
+          id: uid,
+          name: displayName,
+          email: email,
+        });
+      } else {
+        console.log("não logado");
+        setUser(null);
+      }
+      setLoading(false);
+    });
 
-      return getUser;
-  },[auth])
+    return getUser;
+  }, [auth]);
 
   return (
     <AuthContext.Provider value={{ user }}>

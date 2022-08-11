@@ -33,6 +33,10 @@
     margin: 2em 0 1em 0;
 }
 
+.client-title-info {
+    color: #6393E8;
+}
+
 .plate {
     display: flex;
     flex-direction: column;
