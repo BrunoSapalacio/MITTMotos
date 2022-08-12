@@ -1,6 +1,12 @@
 @media (max-width: 480px) {
+    .client-prop-edit label {
+        justify-content: center;
+    }
+
     .client-prop-edit input {
-        width: 60%!important;
+        text-align: center;
+        margin: 0!important;
+        padding: 0!important;
     }
 
     .client-prop-edit span {
