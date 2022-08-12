@@ -66,71 +66,78 @@ const Panel = () => {
   }, []);
 
   const onSubmit = async (userData) => {
-    let plate = null;
-    clients &&
-      // eslint-disable-next-line array-callback-return
-      clients.map((client) => {
-        if (client.plate === userData.plate) {
-          Swal.fire({
-            title: "MITT Motos",
-            html: `A placa <strong>${userData.plate}</strong> já está cadastrada no sistema.`,
-            icon: "warning",
-            showConfirmButton: true,
-            confirmButtonColor: "#6393E8",
-          });
-          plate = client.plate;
-        }
-      });
-    if (plate === null) {
-      try {
-        const today = new Date();
-        let userDataNew = userData;
-        const userCreated = {
-          today: today.toLocaleDateString(),
-          hoursMinutes: today.getHours() + ":" + today.getMinutes(),
-          name: user.name,
-        };
-        const userUpdate = {
-          name: "",
-          today: "",
-          hoursMinutes: "",
-        };
-        userDataNew.create = userCreated;
-        userDataNew.update = userUpdate;
-        console.log(userDataNew);
-        // Função que manda os dados para a API
-        Swal.fire({
-          title: "MITT Motos",
-          text: "Você deseja cadastrar o cliente?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#65B553",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Sim",
-          cancelButtonText: "Não",
-        }).then((result) => {
-          if (result.isConfirmed) {
+    try {
+      let plate = null;
+      //if(errors.phone) return console.log('oi')
+      clients &&
+        // eslint-disable-next-line array-callback-return
+        clients.map((client) => {
+          if (client.plate === userData.plate) {
             Swal.fire({
               title: "MITT Motos",
-              text: "O Cliente foi cadastrado com sucesso.",
-              icon: "success",
+              html: `A placa <strong>${userData.plate}</strong> já está cadastrada no sistema.`,
+              icon: "warning",
               showConfirmButton: true,
               confirmButtonColor: "#6393E8",
-            }).then(async (result) => {
-              if (result.isConfirmed) {
-                await addDoc(clientsCollectionRef, userDataNew);
-                document.location.reload(true);
-              }
             });
+            plate = client.plate;
           }
         });
-      } catch (error) {
-        console.error(error);
+      if (!plate) {
+        try {
+          const today = new Date();
+          let userDataNew = userData;
+          const userCreated = {
+            today: today.toLocaleDateString(),
+            hoursMinutes: today.getHours() + ":" + today.getMinutes(),
+            name: user.name,
+          };
+          const userUpdate = {
+            name: "",
+            today: "",
+            hoursMinutes: "",
+          };
+          userDataNew.create = userCreated;
+          userDataNew.update = userUpdate;
+          console.log(userDataNew);
+          // Função que manda os dados para a API
+          Swal.fire({
+            title: "MITT Motos",
+            text: "Você deseja cadastrar o cliente?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#65B553",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim",
+            cancelButtonText: "Não",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "MITT Motos",
+                text: "O Cliente foi cadastrado com sucesso.",
+                icon: "success",
+                showConfirmButton: true,
+                confirmButtonColor: "#6393E8",
+              }).then(async (result) => {
+                if (result.isConfirmed) {
+                  await addDoc(clientsCollectionRef, userDataNew);
+                  document.location.reload(true);
+                }
+              });
+            }
+          });
+        } catch (error) {
+          console.error(error);
+        }
       }
+    } catch(error) {
+      console.log(error);
     }
   };
 
-  console.log(errors);
+  console.log(errors.plate);
+
+  if(errors.length > 0) return console.log('ola')
 
   return (
     <div className="panel">

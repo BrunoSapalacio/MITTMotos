@@ -73,10 +73,11 @@ const Clients = ({ clients }) => {
     setDataClient(client);
   };
 
-  const searchPlate = () => {
+  const searchPlate = (e) => {
+    e.preventDefault();
     // Procura uma placa de veiculo no array dos clientes compativel com os dados da input
     let plate = null;
-    console.log(search);
+    console.log(search.length);
     // eslint-disable-next-line array-callback-return
     clients &&
       // eslint-disable-next-line array-callback-return
@@ -87,7 +88,7 @@ const Clients = ({ clients }) => {
           plate = client.plate;
         }
       });
-    if (plate === null) {
+    if (!plate) {
       Swal.fire({
         title: "MITT Motos",
         html: `A placa <strong>${search.toUpperCase()}</strong> não está registrada no sistema.`,
@@ -112,20 +113,22 @@ const Clients = ({ clients }) => {
                 <div className="client-container">
                   <div className="client-header">
                     <h1 className="font-regular">Clientes</h1>
-                    <label className="box-search">
-                      <input
-                        type="text"
-                        className="search"
-                        placeholder="Buscar Placa..."
-                        onChange={(e) =>
-                          setSearch(e.target.value.toLocaleUpperCase())
-                        }
-                      />
-                      <button
-                        className="search-button"
-                        onClick={() => searchPlate()}
-                      ></button>
-                    </label>
+                    <form onSubmit={searchPlate}>
+                      <label className="box-search">
+                        <input
+                          type="text"
+                          className="search"
+                          placeholder="Buscar Placa..."
+                          required
+                          onChange={(e) =>
+                            setSearch(e.target.value.toLocaleUpperCase())
+                          }
+                        />
+                        <button
+                          className="search-button"
+                        ></button>
+                      </label>
+                    </form>
                   </div>
                   <ul className="client-container">
                     <div className="clients-flex">
@@ -182,18 +185,20 @@ const Clients = ({ clients }) => {
               <div className="client-container">
                 <div className="client-header">
                   <h1 className="font-regular">Clientes</h1>
+                  <form onSubmit={searchPlate}>
                   <label className="box-search">
                     <input
                       type="text"
                       className="search"
                       placeholder="Buscar Placa..."
                       onChange={(e) => setSearch(e.target.value)}
+                      required
                     />
                     <button
                       className="search-button"
-                      onClick={() => searchPlate()}
                     ></button>
                   </label>
+                  </form>
                 </div>
                 <ul className="client-container">
                   <div className="clients-flex">

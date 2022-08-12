@@ -30,7 +30,6 @@ const schema = yup
     km: yup
       .number()
       .required("A kilometragem é obrigatório")
-      .min(1)
       .typeError("A kilometragem é obrigatória"),
     plate: yup
       .string()

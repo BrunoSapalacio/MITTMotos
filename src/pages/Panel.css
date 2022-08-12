@@ -7,10 +7,6 @@
         grid-row-gap: 0 !important;
     }
 
-    .client-header {
-        width: 90% !important;
-    }
-
     .grid label {
         height: 4.1em !important;
     }
@@ -42,24 +38,26 @@
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 2fr);
-    grid-template-rows: repeat(2, 2.5em);
-    grid-column-gap: 2em;
-    grid-row-gap: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1050px;
+    gap: 2em;
     margin: 1.5em 0;
 }
 
 .grid label {
     display: flex;
     flex-direction: column;
-    height: 5em
+    align-items: center;
 }
 
 .grid label span {
     color: #fff;
     margin: 0.3em;
     font-size: 0.8em;
+    position: absolute;
+    margin-top: 3.5em;
 }
 
 .grid input,
@@ -102,7 +100,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     color: #fff;
     margin: 3em 0 2em 0;
 }
@@ -114,6 +112,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.client-header form {
+    width: 100%;
 }
 
 .box-search {
@@ -148,7 +150,7 @@
     align-items: center;
     background-color: #F3F3F3;
     flex-direction: column;
-    max-width: 1050px;
+    max-width: 1200px;
     width: 100%;
 }
 
@@ -157,7 +159,8 @@
     justify-content: space-around;
     justify-self: center;
     flex-wrap: wrap;
-    width: 100%
+    width: 90%;
+    column-gap: 1.5em;
 }
 
 .client {

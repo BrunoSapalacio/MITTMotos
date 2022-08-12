@@ -73,7 +73,7 @@ const Profile = () => {
               confirmButtonColor: "#6393E8",
             }).then((result) => {
               if (result.isConfirmed) {
-                document.location.reload(true);
+                document.location.replace('/');
               }
             });
           })
