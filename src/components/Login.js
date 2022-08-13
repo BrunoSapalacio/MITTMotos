@@ -6,11 +6,13 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 //CSS
 import "../pages/Home.css";
+
+// Hooks
 import useAuth from "../hooks/useAuth";
 
 const schema = yup
   .object({
-    mail: yup
+    email: yup
       .string()
       .required("O email é obrigatório")
       .email("Digite um email valido"),
@@ -32,7 +34,7 @@ const Login = ({ state }) => {
 
   const onSubmit = async (userData) => {
     let errorMessageAuth;
-    await signInWithEmailAndPassword(auth, userData.mail, userData.pass)
+    await signInWithEmailAndPassword(auth, userData.email, userData.pass)
       .then((userCredential) => {
         // Signed in
         document.location.replace("/");
@@ -73,24 +75,36 @@ const Login = ({ state }) => {
       <h5>Seja bem vindo ao</h5>
       <h1>MITT Motos</h1>
       <h2 className="title-home">LOGIN</h2>
-      <div className="content-login">
+      <div className="content-loginAndRegister">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label className="label-home">
             <div className="input-home">
-              <div className="icon-mail"></div>
               <input
+                className="icon-email"
+                style={
+                  errors.email && {
+                    backgroundColor: "rgb(251, 236, 242)",
+                    border: "1px solid red",
+                  }
+                }
                 type="text"
                 placeholder="Digite o email"
                 autoComplete="off"
-                {...register("mail")}
+                {...register("email")}
               />
             </div>
-            {errors.mail && <span>{errors.mail?.message}</span>}
+            {errors.email && <span>{errors.email?.message}</span>}
           </label>
           <label className="label-home">
             <div className="input-home">
-              <div className="icon-pass"></div>
               <input
+                className="icon-pass"
+                style={
+                  errors.pass && {
+                    backgroundColor: "rgb(251, 236, 242)",
+                    border: "1px solid red",
+                  }
+                }
                 type="password"
                 placeholder="Digite a senha"
                 autoComplete="off"

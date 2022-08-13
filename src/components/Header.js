@@ -5,7 +5,7 @@ import { getAuth, signOut } from "firebase/auth";
 import useAuth from "../hooks/useAuth";
 
 //CSS
-import "./Main.css";
+import "./Header.css";
 
 // Icones
 import Profile from "../images/user.jpg";

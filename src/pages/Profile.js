@@ -73,7 +73,7 @@ const Profile = () => {
               confirmButtonColor: "#6393E8",
             }).then((result) => {
               if (result.isConfirmed) {
-                document.location.replace('/');
+                document.location.replace("/");
               }
             });
           })
@@ -169,6 +169,7 @@ const Profile = () => {
                   <label>
                     <p>Nome:</p>
                     <input
+                      style={errors.name && { borderColor: "red" }}
                       type="text"
                       placeholder="Nome do administrador"
                       {...register("name", { required: true })}
@@ -179,6 +180,7 @@ const Profile = () => {
                   <label>
                     <p>Email:</p>
                     <input
+                      style={errors.email && { borderColor: "red" }}
                       type="text"
                       placeholder="Email do administrador"
                       {...register("email", { required: true })}

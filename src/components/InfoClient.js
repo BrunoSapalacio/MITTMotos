@@ -1,7 +1,7 @@
 import { useMask, presets } from "mask-hooks"; // Cria mascara personalizada
 
 //CSS
-import "./Main.css";
+import "./InfoClient.css";
 
 const InfoClient = (dataClient) => {
   console.log(dataClient.client.update);

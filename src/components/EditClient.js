@@ -7,7 +7,7 @@ import db from "../firebase/Database";
 import { doc, updateDoc } from "firebase/firestore";
 
 //CSS
-import "./Main.css";
+import "./EditClient.css";
 
 // Hooks
 import useAuth from "../hooks/useAuth";
@@ -159,6 +159,11 @@ const EditClient = (dataClient) => {
           <label>
             <p>Nome:</p>
             <input
+              style={
+                errors.name && {
+                  borderColor: "red",
+                }
+              }
               type="text"
               placeholder="Nome do cliente"
               {...register("name", { required: true })}
@@ -169,6 +174,11 @@ const EditClient = (dataClient) => {
           <label>
             <p>CPF:</p>
             <input
+              style={
+                errors.cpf && {
+                  borderColor: "red",
+                }
+              }
               maxLength={11}
               placeholder="CPF do cliente"
               {...register("cpf", {
@@ -183,6 +193,11 @@ const EditClient = (dataClient) => {
           <label>
             <p>Telefone:</p>
             <input
+              style={
+                errors.phone && {
+                  borderColor: "red",
+                }
+              }
               maxLength={10}
               placeholder="Telefone / Celular"
               {...register("phone", {
@@ -197,6 +212,11 @@ const EditClient = (dataClient) => {
           <label>
             <p>Modelo:</p>
             <input
+              style={
+                errors.vehicle && {
+                  borderColor: "red",
+                }
+              }
               type="text"
               placeholder="Veículo do cliente"
               {...register("vehicle", { required: true })}
@@ -207,6 +227,11 @@ const EditClient = (dataClient) => {
           <label>
             <p>Kilometragem:</p>
             <input
+              style={
+                errors.km && {
+                  borderColor: "red",
+                }
+              }
               placeholder="Kilometragem do veículo"
               {...register("km", {
                 required: true,

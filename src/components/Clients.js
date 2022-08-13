@@ -5,9 +5,9 @@ import db from "../firebase/Database";
 import { doc, deleteDoc } from "firebase/firestore";
 
 // CSS
-import "../pages/Panel.css";
+import "./Clients.css";
 
-// paginas
+// Paginas
 import EditClient from "../components/EditClient";
 import InfoClient from "./InfoClient";
 
@@ -124,9 +124,7 @@ const Clients = ({ clients }) => {
                             setSearch(e.target.value.toLocaleUpperCase())
                           }
                         />
-                        <button
-                          className="search-button"
-                        ></button>
+                        <button className="search-button"></button>
                       </label>
                     </form>
                   </div>
@@ -186,18 +184,16 @@ const Clients = ({ clients }) => {
                 <div className="client-header">
                   <h1 className="font-regular">Clientes</h1>
                   <form onSubmit={searchPlate}>
-                  <label className="box-search">
-                    <input
-                      type="text"
-                      className="search"
-                      placeholder="Buscar Placa..."
-                      onChange={(e) => setSearch(e.target.value)}
-                      required
-                    />
-                    <button
-                      className="search-button"
-                    ></button>
-                  </label>
+                    <label className="box-search">
+                      <input
+                        type="text"
+                        className="search"
+                        placeholder="Buscar Placa..."
+                        onChange={(e) => setSearch(e.target.value)}
+                        required
+                      />
+                      <button className="search-button"></button>
+                    </label>
                   </form>
                 </div>
                 <ul className="client-container">

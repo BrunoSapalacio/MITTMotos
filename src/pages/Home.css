@@ -1,4 +1,4 @@
-@media (max-width: 480px) {
+@media (max-width: 999px) {
     .image {
         display: none !important;
     }
@@ -118,6 +118,7 @@ form {
     border: none;
     border-radius: 5px;
     background-color: rgb(238, 238, 238);
+    padding-left: 45px;
 }
 
 .label-home span {
@@ -126,24 +127,24 @@ form {
 
 .icon-user,
 .icon-pass,
-.icon-mail {
+.icon-email {
     width: 60px;
     background-size: 1em;
 }
 
 .icon-user {
-    background: url(../icons/user.svg) center no-repeat;
+    background: url(../icons/user.svg) 12px 50% no-repeat;
     background-size: 1.8em;
 
 }
 
 .icon-pass {
-    background: url(../icons/pass.svg) center no-repeat;
+    background: url(../icons/pass.svg) 15px 50% no-repeat;
     background-size: 1.4em;
 }
 
-.icon-mail {
-    background: url(../icons/mail.svg) center no-repeat;
+.icon-email {
+    background: url(../icons/mail.svg) 15px 50% no-repeat;
     background-size: 1.4em;
 }
 
@@ -178,18 +179,18 @@ input:focus {
     outline: 0;
 }
 
-.content-login a {
+.content-loginAndRegister a {
     font-weight: 600;
     color: #6393E8;
 }
 
-.content-login>div {
+.content-loginAndRegister>div {
     display: flex;
     justify-content: center;
     gap: 0.5em;
 }
 
-.content-login>form>p {
+.content-loginAndRegister>form>p {
     margin-bottom: 1em;
 }
 

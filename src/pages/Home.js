@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 
 //Imagem
 import Motorcycle from "../images/Motorcycle.png";

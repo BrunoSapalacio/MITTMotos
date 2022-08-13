@@ -1,0 +1,83 @@
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-top {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5em;
+  height: 5em;
+}
+
+.header .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title a {
+  color: #6393E8;
+}
+
+.header .container-nav,
+.box-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  border: 4px solid #434343;
+}
+
+.profile:hover {
+  cursor: pointer;
+}
+
+.container-nav:hover .nav {
+  display: flex;
+}
+
+.nav {
+  flex-direction: column;
+  background-color: #fff;
+  width: 10em;
+  padding: 1em;
+  border-radius: 5px;
+  position: absolute;
+  top: 5em;
+  border: 1px solid #ededed;
+  box-shadow: 5px 9px 8px -9px #000000;
+  display: none;
+  transition: all 0.3s ease-out;
+}
+
+.nav a,
+.nav p {
+  padding: 0.6em 0;
+  color: #434343;
+}
+
+.nav a {
+  border-top: 1px solid #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav a:hover {
+  background-color: #e2e2e2;
+}
+
+.icon-loggof,
+.icon-profile {
+  width: 1.3em;
+  height: 1.3em;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.3em;
+}

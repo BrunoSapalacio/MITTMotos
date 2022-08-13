@@ -130,14 +130,10 @@ const Panel = () => {
           console.error(error);
         }
       }
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(errors.plate);
-
-  if(errors.length > 0) return console.log('ola')
 
   return (
     <div className="panel">
@@ -146,9 +142,15 @@ const Panel = () => {
         <div className="register-client">
           <h1 className="font-regular">Cadastro de Clientes</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid">
+            <div className="flex">
               <label>
                 <input
+                  style={
+                    errors.name && {
+                      backgroundColor: "rgb(251, 236, 242)",
+                      border: "1px solid red",
+                    }
+                  }
                   type="text"
                   placeholder="Nome do proprietário"
                   {...register("name", { required: true })}
@@ -160,6 +162,12 @@ const Panel = () => {
               </label>
               <label>
                 <input
+                  style={
+                    errors.cpf && {
+                      backgroundColor: "rgb(251, 236, 242)",
+                      border: "1px solid red",
+                    }
+                  }
                   maxLength={11}
                   placeholder="CPF"
                   {...register("cpf", {
@@ -174,6 +182,12 @@ const Panel = () => {
               </label>
               <label>
                 <input
+                  style={
+                    errors.phone && {
+                      backgroundColor: "rgb(251, 236, 242)",
+                      border: "1px solid red",
+                    }
+                  }
                   maxLength={10}
                   placeholder="Telefone / Celular"
                   {...register("phone", {
@@ -188,6 +202,12 @@ const Panel = () => {
               </label>
               <label>
                 <input
+                  style={
+                    errors.vehicle && {
+                      backgroundColor: "rgb(251, 236, 242)",
+                      border: "1px solid red",
+                    }
+                  }
                   type="text"
                   placeholder="Modelo e ano do veiculo"
                   {...register("vehicle", { required: true })}
@@ -198,6 +218,12 @@ const Panel = () => {
               </label>
               <label>
                 <input
+                  style={
+                    errors.km && {
+                      backgroundColor: "rgb(251, 236, 242)",
+                      border: "1px solid red",
+                    }
+                  }
                   type="number"
                   placeholder="Kilometragem"
                   {...register("km", {
@@ -211,6 +237,12 @@ const Panel = () => {
               </label>
               <label>
                 <input
+                  style={
+                    errors.plate && {
+                      backgroundColor: "rgb(251, 236, 242)",
+                      border: "1px solid red",
+                    }
+                  }
                   type="text"
                   className="plate-text"
                   maxLength={7}

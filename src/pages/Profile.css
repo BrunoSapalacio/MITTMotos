@@ -1,4 +1,4 @@
-@media (max-width: 480px) {
+@media (max-width: 770px) {
     .profile-grid {
         flex-direction: column;
         height: 100% !important;
@@ -8,6 +8,7 @@
     .profile-card-2 {
         width: 100% !important;
         margin: 1.5em 0;
+        padding: 2em 0;
     }
 
     .profile-info {
@@ -81,7 +82,9 @@
 .profile-info {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .profile-info span {
@@ -91,6 +94,10 @@
 
 .profile-info p {
     margin: 0.2em 0;
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    word-break: break-word;
 }
 
 .profile-card-2 {
@@ -121,6 +128,10 @@
     margin-bottom: 1.5em;
 }
 
+.profile-form label:last-child {
+    margin-bottom: 2.5em!important;
+}
+
 .profile-form>label>input {
     width: 95%;
     border: none;
@@ -133,6 +144,7 @@
     color: red;
     position: absolute;
     margin-top: 3em;
+    margin-left: 0.3em;
 }
 
 .button-profile {
@@ -143,7 +155,7 @@
     height: 3.5em;
     color: #fff;
     border-radius: 5px;
-    margin-bottom: 1em;
+    margin: 1em 0 0.1em 0;
     transition: all 0.3s ease-out;
 }
 
