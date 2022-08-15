@@ -209,7 +209,7 @@ const Panel = () => {
                     }
                   }
                   type="text"
-                  placeholder="Modelo e ano do veiculo"
+                  placeholder="Modelo e ano da moto"
                   {...register("vehicle", { required: true })}
                 />
                 {errors.vehicle && (
@@ -246,7 +246,7 @@ const Panel = () => {
                   type="text"
                   className="plate-text"
                   maxLength={7}
-                  placeholder="Placa do veiculo"
+                  placeholder="Placa da moto"
                   {...register("plate", {
                     required: true,
                     setValueAs: (v) => v.toUpperCase(),
