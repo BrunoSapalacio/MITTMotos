@@ -29,7 +29,7 @@ const Login = ({ state }) => {
     resolver: yupResolver(schema),
   });
   const auth = getAuth();
-  const { user, setUser } = useAuth();
+  const { setUser } = useAuth();
 
   const onSubmit = async (userData) => {
     let errorMessageAuth;
@@ -47,7 +47,6 @@ const Login = ({ state }) => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
         if (errorCode === "auth/user-not-found") {
           errorMessageAuth = "Usuário não cadastrado.";
         } else if (errorCode === "auth/wrong-password") {
