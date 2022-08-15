@@ -61,14 +61,12 @@ const Clients = ({ clients }) => {
 
   const editClient = (client) => {
     // Exibe a tela de edição de clientes
-    console.log(client);
     setCheckClient("edit");
     setDataClient(client);
   };
 
   const detailsClient = (client) => {
     // Exibe a tela de detalhes
-    console.log(client);
     setCheckClient("details");
     setDataClient(client);
   };
@@ -77,7 +75,6 @@ const Clients = ({ clients }) => {
     e.preventDefault();
     // Procura uma placa de veiculo no array dos clientes compativel com os dados da input
     let plate = null;
-    console.log(search.length);
     // eslint-disable-next-line array-callback-return
     clients &&
       // eslint-disable-next-line array-callback-return

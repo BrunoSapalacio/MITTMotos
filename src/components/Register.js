@@ -50,10 +50,9 @@ const Register = ({ state }) => {
           displayName: userData.user,
         })
           .then(() => {
-            console.log("Sucesso!");
           })
           .catch((error) => {
-            console.log(error);
+            console.error(error);
           });
         Swal.fire({
           title: "MITT Motos",
@@ -67,7 +66,7 @@ const Register = ({ state }) => {
             signOut(auth)
               .then(() => {})
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
             state();
           }
@@ -76,7 +75,6 @@ const Register = ({ state }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
         if (errorCode === "auth/email-already-in-use") {
           errorMessageAuth = "O Email já está em uso.";
         }

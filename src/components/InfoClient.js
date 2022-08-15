@@ -4,7 +4,6 @@ import { useMask, presets } from "mask-hooks"; // Cria mascara personalizada
 import "./InfoClient.css";
 
 const InfoClient = (dataClient) => {
-  console.log(dataClient.client.update);
   const cpf = useMask(presets.DOCUMENT_CPF); // Transforma a string para o formato do cpf
   const phone = useMask(presets.PHONE_BR); // Transforma a string para o formato do telefone/celular
 

@@ -55,8 +55,6 @@ const Profile = () => {
     }, 0);
   }, [reset, user]);
 
-  const onError = (errors, e) => console.log(errors, e);
-
   const onSubmit = (userData) => {
     console.log(auth.currentUser);
     updateProfile(auth.currentUser, {
@@ -126,7 +124,6 @@ const Profile = () => {
           });
         })
         .catch((error) => {
-          console.log(error);
           Swal.fire({
             title: "MITT Motos",
             html: "Foi verificado que você já está há um tempo logado no sistema. Por questões de segurança, refaça o login para poder alterar a <strong>SENHA.</strong>",
@@ -164,7 +161,7 @@ const Profile = () => {
                 <h1>Meu perfil</h1>
                 <form
                   className="profile-form"
-                  onSubmit={handleSubmit(onSubmit, onError)}
+                  onSubmit={handleSubmit(onSubmit)}
                 >
                   <label>
                     <p>Nome:</p>

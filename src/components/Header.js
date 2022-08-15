@@ -18,11 +18,9 @@ const Header = () => {
   const logoff = () => {
     const auth = getAuth();
     signOut(auth)
-      .then(() => {
-        console.log("Deslogado com sucesso!");
-      })
+      .then(() => {})
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 

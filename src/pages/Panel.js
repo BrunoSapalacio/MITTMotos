@@ -61,14 +61,12 @@ const Panel = () => {
       );
     };
     getClientsAndUsers();
-    console.log(clients);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = async (userData) => {
     try {
       let plate = null;
-      //if(errors.phone) return console.log('oi')
       clients &&
         // eslint-disable-next-line array-callback-return
         clients.map((client) => {
@@ -99,7 +97,6 @@ const Panel = () => {
           };
           userDataNew.create = userCreated;
           userDataNew.update = userUpdate;
-          console.log(userDataNew);
           // Função que manda os dados para a API
           Swal.fire({
             title: "MITT Motos",
@@ -131,7 +128,7 @@ const Panel = () => {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

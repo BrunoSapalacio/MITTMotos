@@ -48,8 +48,6 @@ const EditClient = (dataClient) => {
     resolver: yupResolver(schema),
   });
   const { user } = useAuth();
-  console.log(dataClient);
-  console.log(dataClient.client.id);
 
   useEffect(() => {
     // faz a solicitação do servidor assíncrono e preenche o formulário
@@ -107,7 +105,6 @@ const EditClient = (dataClient) => {
           }).then(async (result) => {
             if (result.isConfirmed) {
               const clientRef = doc(db, "clients", dataClient.client.id);
-              console.log(clientRef);
               await updateDoc(clientRef, {
                 name: userData.name,
                 cpf: userData.cpf,

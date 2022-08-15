@@ -11,7 +11,6 @@ export default function AuthContextProvider(props) {
   useEffect(() => {
     const getUser = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user);
         const { uid, displayName, email } = user;
         setUser({
           id: uid,
@@ -19,7 +18,6 @@ export default function AuthContextProvider(props) {
           email: email,
         });
       } else {
-        console.log("não logado");
         setUser(null);
       }
       setLoading(false);

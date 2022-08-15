@@ -30,7 +30,6 @@ const Login = ({ state }) => {
   });
   const auth = getAuth();
   const { user, setUser } = useAuth();
-  console.log(user);
 
   const onSubmit = async (userData) => {
     let errorMessageAuth;
@@ -49,7 +48,6 @@ const Login = ({ state }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, "+", errorMessage);
         if (errorCode === "auth/user-not-found") {
           errorMessageAuth = "Usuário não cadastrado.";
         } else if (errorCode === "auth/wrong-password") {
