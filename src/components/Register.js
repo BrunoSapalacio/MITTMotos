@@ -74,7 +74,6 @@ const Register = ({ state }) => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
         if (errorCode === "auth/email-already-in-use") {
           errorMessageAuth = "O Email já está em uso.";
         }
