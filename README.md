@@ -1,7 +1,9 @@
-# Getting Started with Create React App
+# MITT Motos - ReactJS e Firebase 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/db120377-dec2-4f31-9553-4e95647bd747/deploy-status)](https://app.netlify.com/sites/mittmotos/deploys)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Apresento a vocês o meu primeiro projeto em React Hooks, a MITT Motos. O projeto é um sistema CRUD para gerenciamento de clientes. Foi um projeto desafiador e ao mesmo tempo divertido, pois me serviu como base para aprender várias tecnologias relacionada ao React! O projeto usa o Firebase como API de banco de dados, na qual o usuário poderá se cadastrar para poder ter acesso ao painel, e assim, poderá criar, editar e excluir os clientes. 
+
+Este projeto foi criado com [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
