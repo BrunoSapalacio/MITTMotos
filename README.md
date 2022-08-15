@@ -4,6 +4,24 @@ Apresento a vocês o meu primeiro projeto em React Hooks, a MITT Motos. O projet
 
 Este projeto foi criado com [Create React App](https://github.com/facebook/create-react-app).
 
+# Como rodar
+
+## 1 - Clone o diretório.
+```shell
+git clone https://github.com/BrunoSapalacio/Calculadora.git
+```
+## 2 - Inicialize o Visual Studio Code.
+
+![imagem_2022-02-15_230816](https://user-images.githubusercontent.com/64747697/154182802-2002da45-bf9e-483b-81c2-255474be9028.png)
+
+## 3 - Abra o projeto no terminal (Crtl+') e digite:
+```shell
+npm start
+```
+
+### 4 - Abra o link http://localhost:3000 em seu navegador para acesar a pagina do projeto.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
