@@ -28,10 +28,11 @@ npm start
 ![11-TelaPerfil](https://user-images.githubusercontent.com/64747697/184716369-e778be19-1026-46d6-99e8-76646bb7a74f.png)
 
 ## Versão Mobile
-![1-TelaLogin](https://user-images.githubusercontent.com/64747697/184722840-36308924-def5-42f2-8b92-ab93d9036322.png)
-![2-TelaCadastro](https://user-images.githubusercontent.com/64747697/184722844-b6b14da0-7764-4f7a-9391-ef1fbc7d76d9.png)
-![3-TelaPainel](https://user-images.githubusercontent.com/64747697/184723570-8ca733bb-14e8-4b69-be1f-a42b0877cb8a.png)
-![4-TelaPerfil](https://user-images.githubusercontent.com/64747697/184722850-81d812c5-cad1-4b9e-bbb0-15d9893655c0.png)
+![1-TelaLogin](https://user-images.githubusercontent.com/64747697/184727630-12e3327c-8806-4d45-95f6-02ad22711ad8.png)
+![2-TelaCadastro](https://user-images.githubusercontent.com/64747697/184727632-a342b5c2-b0f0-440f-b58a-adcbeeabc2d1.png)
+![3-TelaPainel](https://user-images.githubusercontent.com/64747697/184727633-8a029125-ecaf-4ee4-8fb6-a0710cc06341.png)
+![4-TelaPerfil](https://user-images.githubusercontent.com/64747697/184727634-9eee0cea-0bde-46de-ab33-389eb78b8233.png)
+
 
 
 ## Learn More
