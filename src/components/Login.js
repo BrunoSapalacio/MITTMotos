@@ -5,7 +5,7 @@ import Swal from "sweetalert2"; // cria alertas personalizado
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 //CSS
-import "../pages/Home.css";
+import "../style/pages/_home.scss";
 
 // Hooks
 import useAuth from "../hooks/useAuth";
@@ -110,10 +110,10 @@ const Login = ({ state }) => {
             </div>
             {errors.pass && <span>{errors.pass?.message}</span>}
           </label>
-          <input type="submit" className="BoxInput-2" value="LOGAR" />
+          <input type="submit" className="button-login" value="LOGAR" />
           <p>Não possui uma conta? Clique abaixo para se cadastrar</p>
         </form>
-        <button className="BoxInput-1" onClick={state}>
+        <button className="button-register" onClick={state}>
           CRIAR CONTA
         </button>
       </div>

@@ -1,0 +1,135 @@
+@import '../_variables.scss';
+@import '../_mixins.scss';
+
+@media (max-width: 480px) {
+  .client-prop-edit {
+    label {
+      justify-content: center;
+
+      p {
+        text-align: center !important;
+      }
+
+      input {
+        text-align: center;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      span {
+        margin-left: 0 !important;
+        justify-content: center !important;
+      }
+    }
+  }
+}
+
+.edit-client {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #F3F3F3;
+  width: 100vw;
+  max-width: 100%;
+
+  h1 {
+    margin: 2em 0 1em 0;
+
+    .client-title-info {
+      color: $text-color-primary;
+    }
+  }
+
+  .edit-card {
+    width: 80vw;
+    max-width: 1050px;
+    @include client-card;
+
+    .client-buttons {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+      .client-close {
+        @include client-button('../../icons/close.svg', $button-color-close);
+
+        &:hover {
+          background-color: #a11212;
+        }
+      }
+    }
+
+    div {
+      .plate {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5em 0;
+
+        p {
+          margin-bottom: 0.5em;
+        }
+
+        .vehicle-plate {
+          @include plate;
+        }
+
+        span {
+          position: absolute;
+          color: $text-color-error;
+          margin-top: 7.5em;
+        }
+
+      }
+    }
+
+    .client-prop-edit {
+      @include client-prop;
+
+      h4 {
+        margin: 1em 0;
+        color: $text-color-primary;
+      }
+
+      label {
+        display: flex;
+        margin: 0.5em;
+        margin-bottom: 1.5em;
+        height: 2.4em;
+        flex-wrap: wrap;
+
+        p {
+          text-align: start;
+          width: 9em;
+          margin-left: 1em;
+          margin-bottom: 0.2em;
+        }
+
+        input {
+          height: 1.3em;
+          border: none;
+          border-bottom: 1px solid #ccc;
+          font-size: 1em;
+          margin-left: 1em;
+          padding-left: 1em;
+          width: 90%;
+        }
+
+        span {
+          display: flex;
+          color: $text-color-error;
+          width: 100%;
+          justify-content: flex-start;
+          margin-left: 2em;
+          margin-top: 0.2em !important;
+        }
+      }
+
+      .button-edit {
+        max-width: 20em;
+        @include button($button-color-info, 50%, 4em auto);
+      }
+    }
+  }
+}

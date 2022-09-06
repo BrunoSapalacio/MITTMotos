@@ -1,0 +1,143 @@
+@import '../_variables.scss';
+@import '../_mixins.scss';
+
+@media (max-width: 999px) {
+    .moto {
+        display: none !important;
+    }
+
+    .home {
+        width: 100% !important;
+    }
+
+    .home>div {
+        width: 80% !important;
+    }
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+
+    .moto {
+        @include content-home;
+        @include gradient-background;
+
+        img {
+            position: inherit;
+            height: auto;
+            max-width: 70%;
+        }
+    }
+
+    /* ============================== Login.js & Register.js ============================== */
+    
+    .home {
+        @include content-home;
+        background-color: $background-home;
+        color: $text-color-primary;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 26em;
+
+            h1 {
+                font-size: 3em;
+                margin-bottom: 1em;
+            }
+
+            h2 {
+                font-size: 2em;
+                margin-bottom: 1em;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+            }
+
+            h5 {
+                font-size: 1.2em;
+                letter-spacing: 0.155em;
+                font-weight: 400;
+            }
+
+            .content-loginAndRegister {
+                a {
+                    font-weight: 600;
+                    color: $text-color-primary;
+                }
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    gap: 0.5em;
+                }
+
+                form {
+                    .label-home {
+                        height: 4.5em;
+
+                        .input-home {
+                            display: flex;
+                            height: 2.7em;
+                            background-color: $background-input-home;
+                            border-radius: 5px;
+
+                            input {
+                                width: 88%;
+                                border: none;
+                                height: 4em;
+                                border-radius: 5px;
+                                background-color: $background-input-home;
+                                padding-left: 45px;
+
+                                &.icon-user {
+                                    @include input-loginAndRegister('../icons/user.svg', 1.8em);
+
+                                }
+
+                                &.icon-pass {
+                                    @include input-loginAndRegister('../icons/pass.svg', 1.4em);
+                                }
+
+                                &.icon-email {
+                                    @include input-loginAndRegister('../icons/mail.svg', 1.8em);
+                                }
+                            }
+                        }
+
+                        span {
+                            color: $text-color-error;
+                        }
+                    }
+
+                    .button-login {
+                        @include button($button-color-login, 100%, 0.5em 0)
+                    }
+
+                    p {
+                        margin-bottom: 1em;
+                    }
+
+                }
+
+                .button-register {
+                    @include button($button-color-submit, 100%, 0.5em 0)
+                }
+
+            }
+        }
+
+        .footer-home {
+            position: absolute;
+            bottom: 2em;
+        }
+
+    }
+
+
+}

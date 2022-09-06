@@ -7,7 +7,7 @@ import db from "../firebase/Database";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
 // CSS
-import "./Panel.css";
+import "../style/pages/_panel.scss";
 
 //Componentes
 import Clients from "../components/Clients";

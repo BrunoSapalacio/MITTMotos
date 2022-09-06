@@ -17,7 +17,7 @@ import useAuth from "../hooks/useAuth";
 import Header from "../components/Header";
 
 // CSS
-import "./Profile.css";
+import "../style/pages/_profile.scss";
 
 // Imagens
 import profile from "../images/user.jpg";
@@ -186,11 +186,11 @@ const Profile = () => {
                   </label>
                   <input
                     type="submit"
-                    className="button-profile b-black"
+                    className="button-att"
                     value="ATUALIZAR"
                   />
                 </form>
-                <button className="button-profile b-green" onClick={changePass}>
+                <button className="button-att-pass" onClick={changePass}>
                   ALTERAR SENHA
                 </button>
               </div>

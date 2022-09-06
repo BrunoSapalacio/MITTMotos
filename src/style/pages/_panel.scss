@@ -1,0 +1,68 @@
+@import '../_variables.scss';
+@import '../_mixins.scss';
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    background-color: $background-clients;
+
+    /* ======================= Formulario Clientes ================== */
+    .register-client {
+        width: 100vw;
+        max-width: 100%;
+        @include gradient-background;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5em 0;
+
+        form {
+            align-items: center;
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1050px;
+            gap: 2em;
+            margin: 1.5em 0;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                input {
+                    width: 20em;
+                    text-align: center;
+                    border: 1px solid #CDCDCD;
+                    height: 3em;
+                }
+
+                .plate-text {
+                    text-transform: uppercase;
+                }
+
+                span {
+                    color: #fff;
+                    margin: 0.3em;
+                    font-size: 0.8em;
+                    position: absolute;
+                    margin-top: 3.5em;
+                }
+            }
+        }
+
+        .submit {
+            @include button($button-color-submit, 20em, 1em);
+
+            &:hover {
+                background-color: #272626;
+            }
+        }
+    }
+}

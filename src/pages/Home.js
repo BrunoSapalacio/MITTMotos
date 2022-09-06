@@ -4,7 +4,7 @@ import { useState } from "react";
 import Motorcycle from "../images/Motorcycle.png";
 
 //CSS
-import "./Home.css";
+import "../style/pages/_home.scss";
 
 //Componentes
 import Register from "../components/Register";
@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className="content">
       {/* Imagem home */}
-      <div className="image">
+      <div className="moto">
         <img src={Motorcycle} alt="Moto" />
       </div>
       {/* Login */}

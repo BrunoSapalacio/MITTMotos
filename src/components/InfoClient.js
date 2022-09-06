@@ -1,7 +1,7 @@
 import { useMask, presets } from "mask-hooks"; // Cria mascara personalizada
 
 //CSS
-import "./InfoClient.css";
+import "../style/components/_infoClient.scss";
 
 const InfoClient = (dataClient) => {
   const cpf = useMask(presets.DOCUMENT_CPF); // Transforma a string para o formato do cpf
@@ -25,13 +25,13 @@ const InfoClient = (dataClient) => {
           <div>
             <h1 className="vehicle-plate">{dataClient.client.plate}</h1>
           </div>
-          <div className="client-prop-edit">
+          <div className="client-prop-info">
             <h4 className="info-title">PROPRIETÁRIO(A)</h4>
             <p>Nome: {dataClient.client.name}</p>
             <p>CPF: {cpf(dataClient.client.cpf)}</p>
             <p>Telefone: {phone(dataClient.client.phone)}</p>
           </div>
-          <div className="client-prop-edit">
+          <div className="client-prop-info">
             <h4 className="info-title">MOTO</h4>
             <p>Modelo: {dataClient.client.vehicle}</p>
             <p>
@@ -42,7 +42,7 @@ const InfoClient = (dataClient) => {
               Km
             </p>{" "}
           </div>
-          <div className="client-prop-edit">
+          <div className="client-prop-info">
             <h4 className="info-title">REGISTRO</h4>
             <p>Cadastro criado pelo(a): {dataClient.client.create.name}</p>
             <p>Data: {dataClient.client.create.today}</p>

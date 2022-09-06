@@ -1,0 +1,37 @@
+@import '../_variables.scss';
+@import '../_mixins.scss';
+
+.info-box {
+  padding-bottom: 3em;
+  font-size: 1.2em;
+
+  .client-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    width: 100%;
+
+    .vehicle-plate {
+      @include plate;
+    }
+
+    .client-prop-info {
+      @include client-prop;
+
+      .info-title {
+        color: $text-color-primary;
+        font-size: 1.2em;
+        margin: 0.5em 0 !important;
+      }
+
+      .info-update {
+        padding: 1em;
+        background-color: #d4ffbb;
+        border: 1px solid #799d64;
+      }
+    }
+
+  }
+}

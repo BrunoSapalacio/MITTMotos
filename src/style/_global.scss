@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+
 }
 
 body {
@@ -11,6 +12,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  position: inherit;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -19,14 +26,28 @@ body {
   font-weight: 400;
 }
 
-button, input[type=submit] {
+button,
+input[type=submit] {
   cursor: pointer;
 }
 
-button:hover, input[type=submit]:hover {
-  filter: brightness(130%);
+button:hover,
+input[type=submit]:hover {
+  filter: brightness(110%);
 }
 
 a {
   text-decoration: none;
+}
+
+hr {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1em;
+  color: #6393E8;
+}
+
+textarea:focus,
+input:focus {
+  outline: 0;
 }

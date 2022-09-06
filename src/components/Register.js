@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 
 //CSS
-import "../pages/Home.css";
+import "../style/pages/_home.scss";
 
 const schema = yup
   .object({
@@ -169,7 +169,7 @@ const Register = ({ state }) => {
             </div>
             {errors.passConfirm && <span>{errors.passConfirm?.message}</span>}
           </label>
-          <input type="submit" className="BoxInput-1" value="CRIAR CONTA" />
+          <input type="submit" className="button-register" value="CRIAR CONTA" />
         </form>
         <div>
           <p>Já tem uma conta?</p>

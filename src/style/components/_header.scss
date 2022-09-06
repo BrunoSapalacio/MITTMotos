@@ -1,0 +1,87 @@
+@import '../_variables.scss';
+
+.header {
+  display: flex;
+  flex-direction: column;
+
+  .panel-top {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5em;
+    height: 5em;
+
+    .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        color: $text-color-primary;
+      }
+    }
+
+    .container-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        .nav {
+          display: flex!important;
+        }
+      }
+
+      .profile {
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        border: 4px solid #434343;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .nav {
+        flex-direction: column;
+        background-color: $background-nav;
+        width: 10em;
+        padding: 1em;
+        border-radius: 5px;
+        position: absolute;
+        top: 5em;
+        color: $text-color-secondary;
+        border: 1px solid #ededed;
+        box-shadow: 5px 9px 8px -9px #000000;
+        display: none;
+        transition: all 0.3s ease-out;
+
+        a, p {
+          color: #434343;
+          padding: 0.6em 0;
+        }
+
+        a {
+          border-top: 1px solid #ededed;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            background-color: #e2e2e2;
+          }
+
+          @each $name in 'loggof''profile' { // Repete o estilo 
+            .icon-#{$name} {
+              width: 1.3em;
+              height: 1.3em;
+              border: none;
+              cursor: pointer;
+              margin-right: 0.3em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ import db from "../firebase/Database";
 import { doc, deleteDoc } from "firebase/firestore";
 
 // CSS
-import "./Clients.css";
+import "../style/components/_clients.scss";
 
 // Paginas
 import EditClient from "../components/EditClient";

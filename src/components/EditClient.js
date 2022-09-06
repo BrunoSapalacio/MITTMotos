@@ -7,7 +7,7 @@ import db from "../firebase/Database";
 import { doc, updateDoc } from "firebase/firestore";
 
 //CSS
-import "./EditClient.css";
+import "../style/components/_editClient.scss";
 
 // Hooks
 import useAuth from "../hooks/useAuth";
