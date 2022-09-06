@@ -3,6 +3,20 @@
 Apresento a vocês o meu primeiro projeto em React Hooks, a MITT Motos. O projeto é um sistema CRUD para gerenciamento de clientes. Foi um projeto desafiador e ao mesmo tempo divertido, pois me serviu como base para aprender várias tecnologias relacionada ao React! O projeto usa o Firebase como API de banco de dados, na qual o usuário poderá se cadastrar para poder ter acesso ao painel, e assim, poderá criar, editar e excluir os clientes. 
 
 Este projeto foi criado com [Create React App](https://github.com/facebook/create-react-app).
+# O projeto possui: 
+- Sistema de Login, Cadastro, Autenticação e Logout de usuários; 
+- Painel para criar, buscar, editar e excluir os clientes; 
+- Sistema de validação de dados nos formulários; 
+- Sistema de edição de perfil do usuário; 
+- Sistema de registro e atualização do cliente.
+
+# Tecnologias utilizadas
+- [ReactJS](https://pt-br.reactjs.org/) – Framework JavaScript;
+- [Firebase](https://firebase.google.com/) - BaaS (Backend As A Service) é um modelo de serviço que provê a infraestrutura e o backend de uma aplicação de forma simplificada sem necessidade do desenvolvimento manual dessa solução; 
+- [Cloud Firestore](https://firebase.google.com/products/firestore?hl=pt-br&gclid=Cj0KCQjw3eeXBhD7ARIsAHjssr9wNpPcR5qdcIwL2ZCGVcwOrwgyBNKueys3jXiXMGkFc_8IcLi-sU8aAr7IEALw_wcB&gclsrc=aw.ds) - Banco de dados NoSQL; 
+- [React Hook Form](https://react-hook-form.com/) - Gerencia e valida formulários; 
+- [Yup](https://www.npmjs.com/package/yup) - Analisa e valida dados; 
+- [Swal](https://sweetalert2.github.io/) - Criação de alertas personalizáveis. 
 
 # Como rodar
 
