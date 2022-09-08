@@ -8,10 +8,14 @@
 
     .home {
         width: 100% !important;
-    }
 
-    .home>div {
-        width: 80% !important;
+        >div {
+            width: 80% !important;
+        }
+
+        .content-loginAndRegister {
+            width: 100% !important;
+        }
     }
 }
 
@@ -75,6 +79,7 @@
                     display: flex;
                     justify-content: center;
                     gap: 0.5em;
+                    width: 100%;
                 }
 
                 form {
@@ -86,9 +91,9 @@
                             height: 2.7em;
                             background-color: $background-input-home;
                             border-radius: 5px;
+                            width: 100%;
 
                             input {
-                                width: 88%;
                                 border: none;
                                 height: 4em;
                                 border-radius: 5px;
