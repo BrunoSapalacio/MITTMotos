@@ -39,14 +39,17 @@ npm start
 # Prints
 ## Versão Desktop
 ![1-TelaLogin](https://user-images.githubusercontent.com/64747697/184716362-504b4109-1b2e-42ec-8be2-7fb873bc5f9c.png)
-![5-TelaPainel](https://user-images.githubusercontent.com/64747697/184716365-1c4be000-d90d-4905-8628-a9a41e63eb1f.png)
-![11-TelaPerfil](https://user-images.githubusercontent.com/64747697/184716369-e778be19-1026-46d6-99e8-76646bb7a74f.png)
+![5-TelaPainel](https://user-images.githubusercontent.com/64747697/189012107-5ecc566b-5d17-419f-a9ba-7f9f992c255c.png)
+![11-TelaPerfil](https://user-images.githubusercontent.com/64747697/189012109-8cb69512-5148-4654-8eb9-3be9b4a3c7d5.png)
+
+
 
 ## Versão Mobile
-![1-TelaLogin](https://user-images.githubusercontent.com/64747697/184727630-12e3327c-8806-4d45-95f6-02ad22711ad8.png)
-![2-TelaCadastro](https://user-images.githubusercontent.com/64747697/184727632-a342b5c2-b0f0-440f-b58a-adcbeeabc2d1.png)
-![3-TelaPainel](https://user-images.githubusercontent.com/64747697/184727633-8a029125-ecaf-4ee4-8fb6-a0710cc06341.png)
-![4-TelaPerfil](https://user-images.githubusercontent.com/64747697/184727634-9eee0cea-0bde-46de-ab33-389eb78b8233.png)
+![1-TelaLogin](https://user-images.githubusercontent.com/64747697/189011743-651f11ba-1f6e-446d-84d1-13252d117818.png)
+![2-TelaCadastro](https://user-images.githubusercontent.com/64747697/189011744-3ec6332e-45e7-497a-9924-8ca326e2fa7f.png)
+![3-TelaPainel](https://user-images.githubusercontent.com/64747697/189012419-34b217ad-f8d6-45a2-aa3c-4ccead70fb51.png)
+![4-TelaPerfil](https://user-images.githubusercontent.com/64747697/189011746-4c845729-7e67-463a-95c0-7a99956ccdf5.png)
+
 
 
 
