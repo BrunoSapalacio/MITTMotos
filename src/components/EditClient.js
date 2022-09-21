@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useForm } from "react-hook-form"; // cria formulário personalizado
 import { yupResolver } from "@hookform/resolvers/yup"; // aplica as validações no formulário
 import * as yup from "yup"; // cria validações para formulário
@@ -49,7 +49,7 @@ const EditClient = (dataClient) => {
   });
   const { user } = useAuth();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // faz a solicitação do servidor assíncrono e preenche o formulário
     setTimeout(() => {
       reset({

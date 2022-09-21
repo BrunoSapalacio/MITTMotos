@@ -74,18 +74,13 @@ const Clients = ({ clients }) => {
   const searchPlate = (e) => {
     e.preventDefault();
     // Procura uma placa de veiculo no array dos clientes compativel com os dados da input
-    let plate = null;
-    // eslint-disable-next-line array-callback-return
-    clients &&
-      // eslint-disable-next-line array-callback-return
-      clients.map((client) => {
-        if (client.plate === search.toUpperCase()) {
-          setClientSearch(client);
-          setCheckClient("search");
-          plate = client.plate;
-        }
-      });
-    if (!plate) {
+    const plate = clients.find(client => client.plate === search.toUpperCase());
+    console.log(plate);
+    if (plate) {
+      setClientSearch(plate);
+      setCheckClient("search");
+    }
+    else {
       Swal.fire({
         title: "MITT Motos",
         html: `A placa <strong>${search.toUpperCase()}</strong> não está registrada no sistema.`,
