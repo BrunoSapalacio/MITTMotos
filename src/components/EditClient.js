@@ -38,7 +38,7 @@ const schema = yup
   })
   .required();
 
-const EditClient = (dataClient) => {
+const EditClient = ({client}) => {
   const {
     register,
     handleSubmit,
@@ -53,15 +53,15 @@ const EditClient = (dataClient) => {
     // faz a solicitação do servidor assíncrono e preenche o formulário
     setTimeout(() => {
       reset({
-        name: dataClient.client.name,
-        cpf: dataClient.client.cpf,
-        phone: dataClient.client.phone,
-        vehicle: dataClient.client.vehicle,
-        km: dataClient.client.km,
-        plate: dataClient.client.plate,
+        name: client.name,
+        cpf: client.cpf,
+        phone: client.phone,
+        vehicle: client.vehicle,
+        km: client.km,
+        plate: client.plate,
       });
     }, 0);
-  }, [reset, dataClient]);
+  }, [reset, client]);
 
   const close = () => {
     Swal.fire({
@@ -104,7 +104,7 @@ const EditClient = (dataClient) => {
             confirmButtonColor: "#6393E8",
           }).then(async (result) => {
             if (result.isConfirmed) {
-              const clientRef = doc(db, "clients", dataClient.client.id);
+              const clientRef = doc(db, "clients", client.id);
               await updateDoc(clientRef, {
                 name: userData.name,
                 cpf: userData.cpf,
@@ -131,7 +131,7 @@ const EditClient = (dataClient) => {
     <div className="edit-client">
       <h1>
         Editar Cliente{" "}
-        <span className="client-title-info">{dataClient.client.name}</span>
+        <span className="client-title-info">{client.name}</span>
       </h1>
       <div className="client edit-card">
         <div className="client-buttons">

@@ -65,70 +65,60 @@ const Panel = () => {
   }, []);
 
   const onSubmit = async (userData) => {
-    try {
-      let plate = null;
-      clients &&
-        // eslint-disable-next-line array-callback-return
-        clients.map((client) => {
-          if (client.plate === userData.plate) {
+    const plate = clients.find((client) => client.plate === userData.plate);
+    if (plate) {
+      Swal.fire({
+        title: "MITT Motos",
+        html: `A placa <strong>${userData.plate}</strong> já está cadastrada no sistema.`,
+        icon: "warning",
+        showConfirmButton: true,
+        confirmButtonColor: "#6393E8",
+      });
+    } else {
+      try {
+        const today = new Date();
+        let userDataNew = userData;
+        const userCreated = {
+          today: today.toLocaleDateString(),
+          hoursMinutes: today.getHours() + ":" + today.getMinutes(),
+          name: user.name,
+        };
+        const userUpdate = {
+          name: "",
+          today: "",
+          hoursMinutes: "",
+        };
+        userDataNew.create = userCreated;
+        userDataNew.update = userUpdate;
+        // Função que manda os dados para a API
+        Swal.fire({
+          title: "MITT Motos",
+          text: "Você deseja cadastrar o cliente?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#65B553",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Sim",
+          cancelButtonText: "Não",
+        }).then((result) => {
+          if (result.isConfirmed) {
             Swal.fire({
               title: "MITT Motos",
-              html: `A placa <strong>${userData.plate}</strong> já está cadastrada no sistema.`,
-              icon: "warning",
+              text: "O Cliente foi cadastrado com sucesso.",
+              icon: "success",
               showConfirmButton: true,
               confirmButtonColor: "#6393E8",
+            }).then(async (result) => {
+              if (result.isConfirmed) {
+                await addDoc(clientsCollectionRef, userDataNew);
+                document.location.reload(true);
+              }
             });
-            plate = client.plate;
           }
         });
-      if (!plate) {
-        try {
-          const today = new Date();
-          let userDataNew = userData;
-          const userCreated = {
-            today: today.toLocaleDateString(),
-            hoursMinutes: today.getHours() + ":" + today.getMinutes(),
-            name: user.name,
-          };
-          const userUpdate = {
-            name: "",
-            today: "",
-            hoursMinutes: "",
-          };
-          userDataNew.create = userCreated;
-          userDataNew.update = userUpdate;
-          // Função que manda os dados para a API
-          Swal.fire({
-            title: "MITT Motos",
-            text: "Você deseja cadastrar o cliente?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#65B553",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Sim",
-            cancelButtonText: "Não",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire({
-                title: "MITT Motos",
-                text: "O Cliente foi cadastrado com sucesso.",
-                icon: "success",
-                showConfirmButton: true,
-                confirmButtonColor: "#6393E8",
-              }).then(async (result) => {
-                if (result.isConfirmed) {
-                  await addDoc(clientsCollectionRef, userDataNew);
-                  document.location.reload(true);
-                }
-              });
-            }
-          });
-        } catch (error) {
-          console.error(error);
-        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
   };
 
